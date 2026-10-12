@@ -629,7 +629,7 @@ Kubernetes version support aligns with [upstream Kubernetes](#kubernetes-kubeadm
 
 | Calico Enterprise version | Kubernetes/kubeadm versions | Calico Enterprise support                 |
 | ------------------------- | --------------------------- | ----------------------------------------- |
-| 3.22                      | 1.31 - 1.34                 | Calico Enterprise CNI with network policy |
+| 3.22                      | 1.31 - 1.35                 | Calico Enterprise CNI with network policy |
 | 3.21                      | 1.31 - 1.33                 | Calico Enterprise CNI with network policy |
 | 3.20                      | 1.29 - 1.31                 | Calico Enterprise CNI with network policy |
 
@@ -870,9 +870,9 @@ A Linux host that meets the following requirements.
 2. Install the Tigera Operator and custom resource definitions.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor Calico Enterprise metrics.
@@ -880,7 +880,7 @@ A Linux host that meets the following requirements.
    > **SECONDARY:** If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. Install your pull secret.
@@ -898,13 +898,13 @@ A Linux host that meets the following requirements.
 5. Optional: Compliance and packet capture features are optional. To enable these features during installation, download and review the custom-resources.yaml file. Uncomment the necessary CRs and use this custom-resources.yaml for installation.
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 6. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    Monitor progress with the following command:
@@ -1139,11 +1139,11 @@ The geeky details of what you get:
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -1161,7 +1161,7 @@ The geeky details of what you get:
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -1185,13 +1185,13 @@ The geeky details of what you get:
 5. (Optional) Compliance and packet capture features are optional. To enable these features during installation, download and review the custom-resources.yaml file. Uncomment the necessary CRs and use this custom-resources.yaml for installation.
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 6. Install the Tigera custom resources. For more information on configuration options available, see<!-- --> [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    You can now monitor progress with the following command:
@@ -1265,7 +1265,7 @@ helm repo add tigera-ee https://downloads.tigera.io/ee/charts
 
 helm repo update
 
-helm pull tigera-ee/tigera-operator --version v3.22.5
+helm pull tigera-ee/tigera-operator --version v3.22.6
 ```
 
 ### Prepare the Installation Configuration[​](#prepare-the-installation-configuration)
@@ -1321,13 +1321,13 @@ To install a standard Calico Enterprise cluster with Helm:
 2. Optional: Compliance and packetcapture features are optional. To enable these features, review the `values.yaml` file and set the flag to `enabled: true`. In the next step, use this modified `values.yaml` for the Helm install.
 
    ```bash
-   helm show values ./tigera-operator-v3.22.5-0.tgz >values.yaml
+   helm show values ./tigera-operator-v3.22.6-0.tgz >values.yaml
    ```
 
 3. Install the Tigera Operator and custom resource definitions using the Helm 3 chart:
 
    ```bash
-   helm install calico-enterprise tigera-operator-v3.22.5-0.tgz \
+   helm install calico-enterprise tigera-operator-v3.22.6-0.tgz \
 
    --set-file imagePullSecrets.tigera-pull-secret=<path/to/pull/secret>,tigera-prometheus-operator.imagePullSecrets.tigera-pull-secret=<path/to/pull/secret> \
 
@@ -1339,7 +1339,7 @@ To install a standard Calico Enterprise cluster with Helm:
    or if you created a `values.yaml` above:
 
    ```bash
-   helm install calico-enterprise tigera-operator-v3.22.5-0.tgz -f values.yaml \
+   helm install calico-enterprise tigera-operator-v3.22.6-0.tgz -f values.yaml \
 
    --set-file imagePullSecrets.tigera-pull-secret=<path/to/pull/secret>,tigera-prometheus-operator.imagePullSecrets.tigera-pull-secret=<path/to/pull/secret> \
 
@@ -1677,7 +1677,7 @@ Download the <!-- -->Calico Enterprise<!-- --> manifests for OpenShift and add t
 ```bash
 mkdir calico
 
-wget -qO- https://downloads.tigera.io/ee/v3.22.5/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
+wget -qO- https://downloads.tigera.io/ee/v3.22.6/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
 
 cp calico/* manifests/
 ```
@@ -1747,7 +1747,7 @@ oc create -f </path/to/license.yaml>
 Apply the custom resources for enterprise features.
 
 ```bash
-oc create -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-enterprise-resources.yaml
+oc create -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-enterprise-resources.yaml
 ```
 
 Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operator.
@@ -1773,7 +1773,7 @@ Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operato
 >  that you manage yourself.
 
 ```bash
-oc create -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-prometheus-operator.yaml
+oc create -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-prometheus-operator.yaml
 ```
 
 You can now monitor progress with the following command:
@@ -1787,7 +1787,7 @@ When it shows all components with status `Available`, proceed to the next step.
 (Optional) Apply the full CRDs including descriptions.
 
 ```bash
-oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 ```
 
 ## Next steps[​](#next-steps)
@@ -1931,7 +1931,7 @@ Download the <!-- -->Calico Enterprise<!-- --> manifests for OpenShift:
 ```bash
 mkdir calico
 
-wget -qO- https://downloads.tigera.io/ee/v3.22.5/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
+wget -qO- https://downloads.tigera.io/ee/v3.22.6/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
 ```
 
 ### Add an image pull secret[​](#add-an-image-pull-secret)
@@ -2011,7 +2011,7 @@ oc create -f </path/to/license.yaml>
 Apply the custom resources for enterprise features.
 
 ```bash
-oc create -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-enterprise-resources.yaml
+oc create -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-enterprise-resources.yaml
 ```
 
 Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operator.
@@ -2037,7 +2037,7 @@ Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operato
 >  that you manage yourself.
 
 ```bash
-oc create -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-prometheus-operator.yaml
+oc create -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-prometheus-operator.yaml
 ```
 
 You can now monitor progress with the following command:
@@ -2051,7 +2051,7 @@ When it shows all components with status `Available`, proceed to the next step.
 (Optional) Apply the full CRDs including descriptions.
 
 ```bash
-oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 ```
 
 ## Next steps[​](#next-steps)
@@ -2154,7 +2154,7 @@ Download the <!-- -->Calico Enterprise<!-- --> manifests for OpenShift:
 ```bash
 mkdir calico
 
-wget -qO- https://downloads.tigera.io/ee/v3.22.5/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
+wget -qO- https://downloads.tigera.io/ee/v3.22.6/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
 ```
 
 ### Add an image pull secret[​](#add-an-image-pull-secret)
@@ -2234,7 +2234,7 @@ oc create -f </path/to/license.yaml>
 Apply the custom resources for enterprise features.
 
 ```bash
-oc create -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-enterprise-resources.yaml
+oc create -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-enterprise-resources.yaml
 ```
 
 Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operator.
@@ -2260,7 +2260,7 @@ Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operato
 >  that you manage yourself.
 
 ```bash
-oc create -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-prometheus-operator.yaml
+oc create -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-prometheus-operator.yaml
 ```
 
 You can now monitor progress with the following command:
@@ -2274,7 +2274,7 @@ When it shows all components with status `Available`, proceed to the next step.
 (Optional) Apply the full CRDs including descriptions.
 
 ```bash
-oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 ```
 
 ## Next steps[​](#next-steps)
@@ -2373,11 +2373,11 @@ Install Calico Enterprise on an AKS managed Kubernetes cluster.
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -2395,7 +2395,7 @@ Install Calico Enterprise on an AKS managed Kubernetes cluster.
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -2415,7 +2415,7 @@ Install Calico Enterprise on an AKS managed Kubernetes cluster.
 5. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/aks/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/aks/custom-resources.yaml
    ```
 
    You can now monitor progress with the following command:
@@ -2433,11 +2433,11 @@ Wait until the `apiserver` shows a status of `Available`, then proceed to<!-- --
 2. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -2455,7 +2455,7 @@ Wait until the `apiserver` shows a status of `Available`, then proceed to<!-- --
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. Install your pull secret.
@@ -2475,7 +2475,7 @@ Wait until the `apiserver` shows a status of `Available`, then proceed to<!-- --
 6. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/aks/custom-resources-calico-cni.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/aks/custom-resources-calico-cni.yaml
    ```
 
    You can now monitor progress with the following command:
@@ -2557,11 +2557,11 @@ Install Calico Enterprise on an EKS managed Kubernetes cluster.
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -2579,7 +2579,7 @@ Install Calico Enterprise on an EKS managed Kubernetes cluster.
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -2599,7 +2599,7 @@ Install Calico Enterprise on an EKS managed Kubernetes cluster.
 5. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/eks/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/eks/custom-resources.yaml
    ```
 
    You can now monitor progress with the following command:
@@ -2639,11 +2639,11 @@ Before you get started, make sure you have downloaded and configured the<!-- -->
 2. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -2661,7 +2661,7 @@ Before you get started, make sure you have downloaded and configured the<!-- -->
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. Install your pull secret.
@@ -2681,7 +2681,7 @@ Before you get started, make sure you have downloaded and configured the<!-- -->
 6. To configure <!-- -->Calico Enterprise<!-- --> for use with the Calico CNI plugin, we must create an `Installation` <!-- -->resource that has `spec.cni.type: Calico`. Install the<!-- --> `custom-resources-calico-cni.yaml` manifest, which includes this configuration. For more information on configuration options available in this manifest, see<!-- --> [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/eks/custom-resources-calico-cni.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/eks/custom-resources-calico-cni.yaml
    ```
 
 7. Finally, add nodes to the cluster.
@@ -2779,11 +2779,11 @@ The geeky details of what you get:
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -2801,7 +2801,7 @@ The geeky details of what you get:
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -2821,7 +2821,7 @@ The geeky details of what you get:
 5. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    You can now monitor progress with the following command:
@@ -3080,9 +3080,9 @@ The geeky details of what you get:
 3. Install the Tigera Operator and custom resource definitions.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 4. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor Calico Enterprise metrics.
@@ -3090,7 +3090,7 @@ The geeky details of what you get:
    > **SECONDARY:** If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 5. Install your pull secret.
@@ -3110,7 +3110,7 @@ The geeky details of what you get:
 7. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    Monitor progress with the following command:
@@ -3251,9 +3251,9 @@ In a new terminal, install the Calico Enterprise CNI.
 2. Install the Tigera Operator and custom resource definitions.
 
    ```bash
-   kubectl apply --server-side -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl apply --server-side -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -3275,13 +3275,13 @@ In a new terminal, install the Calico Enterprise CNI.
 5. Optional: Compliance and packet capture features are optional. To enable these features during installation, download and review the `custom-resources.yaml` file. Uncomment the necessary CRs and use this `custom-resources.yaml` for installation.
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 6. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 7. Restrict privileged container access in the `tigera-elasticsearch` namespace to only the necessary Tigera and Elasticsearch service accounts using an MKE admission policy annotation.
@@ -3383,9 +3383,9 @@ The geeky details of what you get:
 2. Install the Tigera Operator and custom resource definitions.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install the Prometheus operator and related custom resource definitions. The Prometheus operator is used to deploy Prometheus server and Alertmanager to monitor Calico Enterprise metrics.
@@ -3393,7 +3393,7 @@ The geeky details of what you get:
    > **SECONDARY:** If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. Install your pull secret.
@@ -3413,7 +3413,7 @@ The geeky details of what you get:
 6. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    Monitor progress with the following command:
@@ -3506,9 +3506,9 @@ The geeky details of what you get:
 2. Install the Tigera Operator and custom resource definitions.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install the Prometheus operator and related custom resource definitions. The Prometheus operator is used to deploy Prometheus server and Alertmanager to monitor Calico Enterprise metrics.
@@ -3516,7 +3516,7 @@ The geeky details of what you get:
    > **SECONDARY:** If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. Install your pull secret.
@@ -3536,7 +3536,7 @@ The geeky details of what you get:
 6. Install the Tigera custom resources. For more information on configuration options available, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/rancher/custom-resources-rke2.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/rancher/custom-resources-rke2.yaml
    ```
 
    Monitor progress with the following command:
@@ -3771,11 +3771,11 @@ The geeky details of what you get:
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -3793,7 +3793,7 @@ The geeky details of what you get:
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -3817,13 +3817,13 @@ The geeky details of what you get:
 5. (Optional) Compliance and packet capture features are optional. To enable these features during installation, download and review the custom-resources.yaml file. Uncomment the necessary CRs and use this custom-resources.yaml for installation.
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 6. Install the Tigera custom resources. For more information on configuration options available, see<!-- --> [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    You can now monitor progress with the following command:
@@ -4438,11 +4438,11 @@ To create a Charmed Kubernetes cluster without a CNI, you can customize your dep
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -4460,7 +4460,7 @@ To create a Charmed Kubernetes cluster without a CNI, you can customize your dep
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -4484,13 +4484,13 @@ To create a Charmed Kubernetes cluster without a CNI, you can customize your dep
 5. (Optional) Compliance and packet capture features are optional. To enable these features during installation, download and review the custom-resources.yaml file. Uncomment the necessary CRs and use this custom-resources.yaml for installation.
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 6. Install the Tigera custom resources. For more information on configuration options available, see<!-- --> [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    You can now monitor progress with the following command:
@@ -5319,15 +5319,15 @@ The following steps will outline the installation of Calico Enterprise networkin
 1. Install the Tigera Operator and custom resource definitions.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Download the necessary Installation custom resources.
 
    ```bash
-   wget https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   wget https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 3. Update the `calicoNetwork` options, ensuring that the correct pod CIDR is set. (Rancher uses `10.42.0.0/16` by default.) Below are sample installations for VXLAN and BGP networking using the default Rancher pod CIDR:
@@ -6620,361 +6620,361 @@ In order to install images from your private registry, you must first pull the i
 1. Use the following commands to pull the required <!-- -->Calico Enterprise<!-- --> images.
 
 2. ```bash
-   docker pull quay.io/tigera/operator:v1.40.11
+   docker pull quay.io/tigera/operator:v1.40.12
 
-   docker pull quay.io/tigera/alertmanager:v3.22.5
+   docker pull quay.io/tigera/alertmanager:v3.22.6
 
-   docker pull quay.io/tigera/apiserver:v3.22.5
+   docker pull quay.io/tigera/apiserver:v3.22.6
 
-   docker pull quay.io/tigera/calicoctl:v3.22.5
+   docker pull quay.io/tigera/calicoctl:v3.22.6
 
-   docker pull quay.io/tigera/calicoq:v3.22.5
+   docker pull quay.io/tigera/calicoq:v3.22.6
 
-   docker pull quay.io/tigera/compliance-benchmarker:v3.22.5
+   docker pull quay.io/tigera/compliance-benchmarker:v3.22.6
 
-   docker pull quay.io/tigera/compliance-controller:v3.22.5
+   docker pull quay.io/tigera/compliance-controller:v3.22.6
 
-   docker pull quay.io/tigera/compliance-reporter:v3.22.5
+   docker pull quay.io/tigera/compliance-reporter:v3.22.6
 
-   docker pull quay.io/tigera/compliance-server:v3.22.5
+   docker pull quay.io/tigera/compliance-server:v3.22.6
 
-   docker pull quay.io/tigera/compliance-snapshotter:v3.22.5
+   docker pull quay.io/tigera/compliance-snapshotter:v3.22.6
 
-   docker pull quay.io/tigera/csi:v3.22.5
+   docker pull quay.io/tigera/csi:v3.22.6
 
-   docker pull quay.io/tigera/node-driver-registrar:v3.22.5
+   docker pull quay.io/tigera/node-driver-registrar:v3.22.6
 
-   docker pull quay.io/tigera/deep-packet-inspection:v3.22.5
+   docker pull quay.io/tigera/deep-packet-inspection:v3.22.6
 
-   docker pull quay.io/tigera/dex:v3.22.5
+   docker pull quay.io/tigera/dex:v3.22.6
 
-   docker pull quay.io/tigera/dikastes:v3.22.5
+   docker pull quay.io/tigera/dikastes:v3.22.6
 
-   docker pull quay.io/tigera/egress-gateway:v3.22.5
+   docker pull quay.io/tigera/egress-gateway:v3.22.6
 
-   docker pull quay.io/tigera/intrusion-detection-job-installer:v3.22.5
+   docker pull quay.io/tigera/intrusion-detection-job-installer:v3.22.6
 
-   docker pull quay.io/tigera/elasticsearch:v3.22.5
+   docker pull quay.io/tigera/elasticsearch:v3.22.6
 
-   docker pull quay.io/tigera/elasticsearch-metrics:v3.22.5
+   docker pull quay.io/tigera/elasticsearch-metrics:v3.22.6
 
-   docker pull quay.io/tigera/eck-operator:v3.22.5
+   docker pull quay.io/tigera/eck-operator:v3.22.6
 
-   docker pull quay.io/tigera/envoy:v3.22.5
+   docker pull quay.io/tigera/envoy:v3.22.6
 
-   docker pull quay.io/tigera/es-gateway:v3.22.5
+   docker pull quay.io/tigera/es-gateway:v3.22.6
 
-   docker pull quay.io/tigera/firewall-integration:v3.22.5
+   docker pull quay.io/tigera/firewall-integration:v3.22.6
 
-   docker pull quay.io/tigera/pod2daemon-flexvol:v3.22.5
+   docker pull quay.io/tigera/pod2daemon-flexvol:v3.22.6
 
-   docker pull quay.io/tigera/fluentd:v3.22.5
+   docker pull quay.io/tigera/fluentd:v3.22.6
 
-   docker pull quay.io/tigera/envoy-gateway:v3.22.5
+   docker pull quay.io/tigera/envoy-gateway:v3.22.6
 
-   docker pull quay.io/tigera/envoy-proxy:v3.22.5
+   docker pull quay.io/tigera/envoy-proxy:v3.22.6
 
-   docker pull quay.io/tigera/envoy-ratelimit:v3.22.5
+   docker pull quay.io/tigera/envoy-ratelimit:v3.22.6
 
-   docker pull quay.io/tigera/gateway-l7-collector:v3.22.5
+   docker pull quay.io/tigera/gateway-l7-collector:v3.22.6
 
-   docker pull quay.io/tigera/guardian:v3.22.5
+   docker pull quay.io/tigera/guardian:v3.22.6
 
-   docker pull quay.io/tigera/ingress-collector:v3.22.5
+   docker pull quay.io/tigera/ingress-collector:v3.22.6
 
-   docker pull quay.io/tigera/intrusion-detection-controller:v3.22.5
+   docker pull quay.io/tigera/intrusion-detection-controller:v3.22.6
 
-   docker pull quay.io/tigera/istio-install-cni:v3.22.5
+   docker pull quay.io/tigera/istio-install-cni:v3.22.6
 
-   docker pull quay.io/tigera/istio-pilot:v3.22.5
+   docker pull quay.io/tigera/istio-pilot:v3.22.6
 
-   docker pull quay.io/tigera/istio-proxyv2:v3.22.5
+   docker pull quay.io/tigera/istio-proxyv2:v3.22.6
 
-   docker pull quay.io/tigera/istio-ztunnel:v3.22.5
+   docker pull quay.io/tigera/istio-ztunnel:v3.22.6
 
-   docker pull quay.io/tigera/key-cert-provisioner:v3.22.5
+   docker pull quay.io/tigera/key-cert-provisioner:v3.22.6
 
-   docker pull quay.io/tigera/kibana:v3.22.5
+   docker pull quay.io/tigera/kibana:v3.22.6
 
-   docker pull quay.io/tigera/kube-controllers:v3.22.5
+   docker pull quay.io/tigera/kube-controllers:v3.22.6
 
-   docker pull quay.io/tigera/l7-admission-controller:v3.22.5
+   docker pull quay.io/tigera/l7-admission-controller:v3.22.6
 
-   docker pull quay.io/tigera/l7-collector:v3.22.5
+   docker pull quay.io/tigera/l7-collector:v3.22.6
 
-   docker pull quay.io/tigera/license-agent:v3.22.5
+   docker pull quay.io/tigera/license-agent:v3.22.6
 
-   docker pull quay.io/tigera/linseed:v3.22.5
+   docker pull quay.io/tigera/linseed:v3.22.6
 
-   docker pull quay.io/tigera/manager:v3.22.5
+   docker pull quay.io/tigera/manager:v3.22.6
 
-   docker pull quay.io/tigera/node:v3.22.5
+   docker pull quay.io/tigera/node:v3.22.6
 
-   docker pull quay.io/tigera/packetcapture:v3.22.5
+   docker pull quay.io/tigera/packetcapture:v3.22.6
 
-   docker pull quay.io/tigera/policy-recommendation:v3.22.5
+   docker pull quay.io/tigera/policy-recommendation:v3.22.6
 
-   docker pull quay.io/tigera/prometheus:v3.22.5
+   docker pull quay.io/tigera/prometheus:v3.22.6
 
-   docker pull quay.io/tigera/prometheus-config-reloader:v3.22.5
+   docker pull quay.io/tigera/prometheus-config-reloader:v3.22.6
 
-   docker pull quay.io/tigera/prometheus-operator:v3.22.5
+   docker pull quay.io/tigera/prometheus-operator:v3.22.6
 
-   docker pull quay.io/tigera/queryserver:v3.22.5
+   docker pull quay.io/tigera/queryserver:v3.22.6
 
-   docker pull quay.io/tigera/cni:v3.22.5
+   docker pull quay.io/tigera/cni:v3.22.6
 
-   docker pull quay.io/tigera/prometheus-service:v3.22.5
+   docker pull quay.io/tigera/prometheus-service:v3.22.6
 
-   docker pull quay.io/tigera/typha:v3.22.5
+   docker pull quay.io/tigera/typha:v3.22.6
 
-   docker pull quay.io/tigera/ui-apis:v3.22.5
+   docker pull quay.io/tigera/ui-apis:v3.22.6
 
-   docker pull quay.io/tigera/voltron:v3.22.5
+   docker pull quay.io/tigera/voltron:v3.22.6
 
-   docker pull quay.io/tigera/waf-http-filter:v3.22.5
+   docker pull quay.io/tigera/waf-http-filter:v3.22.6
 
-   docker pull quay.io/tigera/webhooks-processor:v3.22.5
+   docker pull quay.io/tigera/webhooks-processor:v3.22.6
    ```
 
    Retag the images with the name of your private registry `$PRIVATE_REGISTRY`.
 
    ```bash
-   docker tag quay.io/tigera/operator:v1.40.11 $PRIVATE_REGISTRY/tigera/operator:v1.40.11
+   docker tag quay.io/tigera/operator:v1.40.12 $PRIVATE_REGISTRY/tigera/operator:v1.40.12
 
-   docker tag quay.io/tigera/alertmanager:v3.22.5 $PRIVATE_REGISTRY/tigera/alertmanager:v3.22.5
+   docker tag quay.io/tigera/alertmanager:v3.22.6 $PRIVATE_REGISTRY/tigera/alertmanager:v3.22.6
 
-   docker tag quay.io/tigera/apiserver:v3.22.5 $PRIVATE_REGISTRY/tigera/apiserver:v3.22.5
+   docker tag quay.io/tigera/apiserver:v3.22.6 $PRIVATE_REGISTRY/tigera/apiserver:v3.22.6
 
-   docker tag quay.io/tigera/calicoctl:v3.22.5 $PRIVATE_REGISTRY/tigera/calicoctl:v3.22.5
+   docker tag quay.io/tigera/calicoctl:v3.22.6 $PRIVATE_REGISTRY/tigera/calicoctl:v3.22.6
 
-   docker tag quay.io/tigera/calicoq:v3.22.5 $PRIVATE_REGISTRY/tigera/calicoq:v3.22.5
+   docker tag quay.io/tigera/calicoq:v3.22.6 $PRIVATE_REGISTRY/tigera/calicoq:v3.22.6
 
-   docker tag quay.io/tigera/compliance-benchmarker:v3.22.5 $PRIVATE_REGISTRY/tigera/compliance-benchmarker:v3.22.5
+   docker tag quay.io/tigera/compliance-benchmarker:v3.22.6 $PRIVATE_REGISTRY/tigera/compliance-benchmarker:v3.22.6
 
-   docker tag quay.io/tigera/compliance-controller:v3.22.5 $PRIVATE_REGISTRY/tigera/compliance-controller:v3.22.5
+   docker tag quay.io/tigera/compliance-controller:v3.22.6 $PRIVATE_REGISTRY/tigera/compliance-controller:v3.22.6
 
-   docker tag quay.io/tigera/compliance-reporter:v3.22.5 $PRIVATE_REGISTRY/tigera/compliance-reporter:v3.22.5
+   docker tag quay.io/tigera/compliance-reporter:v3.22.6 $PRIVATE_REGISTRY/tigera/compliance-reporter:v3.22.6
 
-   docker tag quay.io/tigera/compliance-server:v3.22.5 $PRIVATE_REGISTRY/tigera/compliance-server:v3.22.5
+   docker tag quay.io/tigera/compliance-server:v3.22.6 $PRIVATE_REGISTRY/tigera/compliance-server:v3.22.6
 
-   docker tag quay.io/tigera/compliance-snapshotter:v3.22.5 $PRIVATE_REGISTRY/tigera/compliance-snapshotter:v3.22.5
+   docker tag quay.io/tigera/compliance-snapshotter:v3.22.6 $PRIVATE_REGISTRY/tigera/compliance-snapshotter:v3.22.6
 
-   docker tag quay.io/tigera/csi:v3.22.5 $PRIVATE_REGISTRY/tigera/csi:v3.22.5
+   docker tag quay.io/tigera/csi:v3.22.6 $PRIVATE_REGISTRY/tigera/csi:v3.22.6
 
-   docker tag quay.io/tigera/node-driver-registrar:v3.22.5 $PRIVATE_REGISTRY/tigera/node-driver-registrar:v3.22.5
+   docker tag quay.io/tigera/node-driver-registrar:v3.22.6 $PRIVATE_REGISTRY/tigera/node-driver-registrar:v3.22.6
 
-   docker tag quay.io/tigera/deep-packet-inspection:v3.22.5 $PRIVATE_REGISTRY/tigera/deep-packet-inspection:v3.22.5
+   docker tag quay.io/tigera/deep-packet-inspection:v3.22.6 $PRIVATE_REGISTRY/tigera/deep-packet-inspection:v3.22.6
 
-   docker tag quay.io/tigera/dex:v3.22.5 $PRIVATE_REGISTRY/tigera/dex:v3.22.5
+   docker tag quay.io/tigera/dex:v3.22.6 $PRIVATE_REGISTRY/tigera/dex:v3.22.6
 
-   docker tag quay.io/tigera/dikastes:v3.22.5 $PRIVATE_REGISTRY/tigera/dikastes:v3.22.5
+   docker tag quay.io/tigera/dikastes:v3.22.6 $PRIVATE_REGISTRY/tigera/dikastes:v3.22.6
 
-   docker tag quay.io/tigera/egress-gateway:v3.22.5 $PRIVATE_REGISTRY/tigera/egress-gateway:v3.22.5
+   docker tag quay.io/tigera/egress-gateway:v3.22.6 $PRIVATE_REGISTRY/tigera/egress-gateway:v3.22.6
 
-   docker tag quay.io/tigera/intrusion-detection-job-installer:v3.22.5 $PRIVATE_REGISTRY/tigera/intrusion-detection-job-installer:v3.22.5
+   docker tag quay.io/tigera/intrusion-detection-job-installer:v3.22.6 $PRIVATE_REGISTRY/tigera/intrusion-detection-job-installer:v3.22.6
 
-   docker tag quay.io/tigera/elasticsearch:v3.22.5 $PRIVATE_REGISTRY/tigera/elasticsearch:v3.22.5
+   docker tag quay.io/tigera/elasticsearch:v3.22.6 $PRIVATE_REGISTRY/tigera/elasticsearch:v3.22.6
 
-   docker tag quay.io/tigera/elasticsearch-metrics:v3.22.5 $PRIVATE_REGISTRY/tigera/elasticsearch-metrics:v3.22.5
+   docker tag quay.io/tigera/elasticsearch-metrics:v3.22.6 $PRIVATE_REGISTRY/tigera/elasticsearch-metrics:v3.22.6
 
-   docker tag quay.io/tigera/eck-operator:v3.22.5 $PRIVATE_REGISTRY/tigera/eck-operator:v3.22.5
+   docker tag quay.io/tigera/eck-operator:v3.22.6 $PRIVATE_REGISTRY/tigera/eck-operator:v3.22.6
 
-   docker tag quay.io/tigera/envoy:v3.22.5 $PRIVATE_REGISTRY/tigera/envoy:v3.22.5
+   docker tag quay.io/tigera/envoy:v3.22.6 $PRIVATE_REGISTRY/tigera/envoy:v3.22.6
 
-   docker tag quay.io/tigera/es-gateway:v3.22.5 $PRIVATE_REGISTRY/tigera/es-gateway:v3.22.5
+   docker tag quay.io/tigera/es-gateway:v3.22.6 $PRIVATE_REGISTRY/tigera/es-gateway:v3.22.6
 
-   docker tag quay.io/tigera/firewall-integration:v3.22.5 $PRIVATE_REGISTRY/tigera/firewall-integration:v3.22.5
+   docker tag quay.io/tigera/firewall-integration:v3.22.6 $PRIVATE_REGISTRY/tigera/firewall-integration:v3.22.6
 
-   docker tag quay.io/tigera/pod2daemon-flexvol:v3.22.5 $PRIVATE_REGISTRY/tigera/pod2daemon-flexvol:v3.22.5
+   docker tag quay.io/tigera/pod2daemon-flexvol:v3.22.6 $PRIVATE_REGISTRY/tigera/pod2daemon-flexvol:v3.22.6
 
-   docker tag quay.io/tigera/fluentd:v3.22.5 $PRIVATE_REGISTRY/tigera/fluentd:v3.22.5
+   docker tag quay.io/tigera/fluentd:v3.22.6 $PRIVATE_REGISTRY/tigera/fluentd:v3.22.6
 
-   docker tag quay.io/tigera/envoy-gateway:v3.22.5 $PRIVATE_REGISTRY/tigera/envoy-gateway:v3.22.5
+   docker tag quay.io/tigera/envoy-gateway:v3.22.6 $PRIVATE_REGISTRY/tigera/envoy-gateway:v3.22.6
 
-   docker tag quay.io/tigera/envoy-proxy:v3.22.5 $PRIVATE_REGISTRY/tigera/envoy-proxy:v3.22.5
+   docker tag quay.io/tigera/envoy-proxy:v3.22.6 $PRIVATE_REGISTRY/tigera/envoy-proxy:v3.22.6
 
-   docker tag quay.io/tigera/envoy-ratelimit:v3.22.5 $PRIVATE_REGISTRY/tigera/envoy-ratelimit:v3.22.5
+   docker tag quay.io/tigera/envoy-ratelimit:v3.22.6 $PRIVATE_REGISTRY/tigera/envoy-ratelimit:v3.22.6
 
-   docker tag quay.io/tigera/gateway-l7-collector:v3.22.5 $PRIVATE_REGISTRY/tigera/gateway-l7-collector:v3.22.5
+   docker tag quay.io/tigera/gateway-l7-collector:v3.22.6 $PRIVATE_REGISTRY/tigera/gateway-l7-collector:v3.22.6
 
-   docker tag quay.io/tigera/guardian:v3.22.5 $PRIVATE_REGISTRY/tigera/guardian:v3.22.5
+   docker tag quay.io/tigera/guardian:v3.22.6 $PRIVATE_REGISTRY/tigera/guardian:v3.22.6
 
-   docker tag quay.io/tigera/ingress-collector:v3.22.5 $PRIVATE_REGISTRY/tigera/ingress-collector:v3.22.5
+   docker tag quay.io/tigera/ingress-collector:v3.22.6 $PRIVATE_REGISTRY/tigera/ingress-collector:v3.22.6
 
-   docker tag quay.io/tigera/intrusion-detection-controller:v3.22.5 $PRIVATE_REGISTRY/tigera/intrusion-detection-controller:v3.22.5
+   docker tag quay.io/tigera/intrusion-detection-controller:v3.22.6 $PRIVATE_REGISTRY/tigera/intrusion-detection-controller:v3.22.6
 
-   docker tag quay.io/tigera/istio-install-cni:v3.22.5 $PRIVATE_REGISTRY/tigera/istio-install-cni:v3.22.5
+   docker tag quay.io/tigera/istio-install-cni:v3.22.6 $PRIVATE_REGISTRY/tigera/istio-install-cni:v3.22.6
 
-   docker tag quay.io/tigera/istio-pilot:v3.22.5 $PRIVATE_REGISTRY/tigera/istio-pilot:v3.22.5
+   docker tag quay.io/tigera/istio-pilot:v3.22.6 $PRIVATE_REGISTRY/tigera/istio-pilot:v3.22.6
 
-   docker tag quay.io/tigera/istio-proxyv2:v3.22.5 $PRIVATE_REGISTRY/tigera/istio-proxyv2:v3.22.5
+   docker tag quay.io/tigera/istio-proxyv2:v3.22.6 $PRIVATE_REGISTRY/tigera/istio-proxyv2:v3.22.6
 
-   docker tag quay.io/tigera/istio-ztunnel:v3.22.5 $PRIVATE_REGISTRY/tigera/istio-ztunnel:v3.22.5
+   docker tag quay.io/tigera/istio-ztunnel:v3.22.6 $PRIVATE_REGISTRY/tigera/istio-ztunnel:v3.22.6
 
-   docker tag quay.io/tigera/key-cert-provisioner:v3.22.5 $PRIVATE_REGISTRY/tigera/key-cert-provisioner:v3.22.5
+   docker tag quay.io/tigera/key-cert-provisioner:v3.22.6 $PRIVATE_REGISTRY/tigera/key-cert-provisioner:v3.22.6
 
-   docker tag quay.io/tigera/kibana:v3.22.5 $PRIVATE_REGISTRY/tigera/kibana:v3.22.5
+   docker tag quay.io/tigera/kibana:v3.22.6 $PRIVATE_REGISTRY/tigera/kibana:v3.22.6
 
-   docker tag quay.io/tigera/kube-controllers:v3.22.5 $PRIVATE_REGISTRY/tigera/kube-controllers:v3.22.5
+   docker tag quay.io/tigera/kube-controllers:v3.22.6 $PRIVATE_REGISTRY/tigera/kube-controllers:v3.22.6
 
-   docker tag quay.io/tigera/l7-admission-controller:v3.22.5 $PRIVATE_REGISTRY/tigera/l7-admission-controller:v3.22.5
+   docker tag quay.io/tigera/l7-admission-controller:v3.22.6 $PRIVATE_REGISTRY/tigera/l7-admission-controller:v3.22.6
 
-   docker tag quay.io/tigera/l7-collector:v3.22.5 $PRIVATE_REGISTRY/tigera/l7-collector:v3.22.5
+   docker tag quay.io/tigera/l7-collector:v3.22.6 $PRIVATE_REGISTRY/tigera/l7-collector:v3.22.6
 
-   docker tag quay.io/tigera/license-agent:v3.22.5 $PRIVATE_REGISTRY/tigera/license-agent:v3.22.5
+   docker tag quay.io/tigera/license-agent:v3.22.6 $PRIVATE_REGISTRY/tigera/license-agent:v3.22.6
 
-   docker tag quay.io/tigera/linseed:v3.22.5 $PRIVATE_REGISTRY/tigera/linseed:v3.22.5
+   docker tag quay.io/tigera/linseed:v3.22.6 $PRIVATE_REGISTRY/tigera/linseed:v3.22.6
 
-   docker tag quay.io/tigera/manager:v3.22.5 $PRIVATE_REGISTRY/tigera/manager:v3.22.5
+   docker tag quay.io/tigera/manager:v3.22.6 $PRIVATE_REGISTRY/tigera/manager:v3.22.6
 
-   docker tag quay.io/tigera/node:v3.22.5 $PRIVATE_REGISTRY/tigera/node:v3.22.5
+   docker tag quay.io/tigera/node:v3.22.6 $PRIVATE_REGISTRY/tigera/node:v3.22.6
 
-   docker tag quay.io/tigera/packetcapture:v3.22.5 $PRIVATE_REGISTRY/tigera/packetcapture:v3.22.5
+   docker tag quay.io/tigera/packetcapture:v3.22.6 $PRIVATE_REGISTRY/tigera/packetcapture:v3.22.6
 
-   docker tag quay.io/tigera/policy-recommendation:v3.22.5 $PRIVATE_REGISTRY/tigera/policy-recommendation:v3.22.5
+   docker tag quay.io/tigera/policy-recommendation:v3.22.6 $PRIVATE_REGISTRY/tigera/policy-recommendation:v3.22.6
 
-   docker tag quay.io/tigera/prometheus:v3.22.5 $PRIVATE_REGISTRY/tigera/prometheus:v3.22.5
+   docker tag quay.io/tigera/prometheus:v3.22.6 $PRIVATE_REGISTRY/tigera/prometheus:v3.22.6
 
-   docker tag quay.io/tigera/prometheus-config-reloader:v3.22.5 $PRIVATE_REGISTRY/tigera/prometheus-config-reloader:v3.22.5
+   docker tag quay.io/tigera/prometheus-config-reloader:v3.22.6 $PRIVATE_REGISTRY/tigera/prometheus-config-reloader:v3.22.6
 
-   docker tag quay.io/tigera/prometheus-operator:v3.22.5 $PRIVATE_REGISTRY/tigera/prometheus-operator:v3.22.5
+   docker tag quay.io/tigera/prometheus-operator:v3.22.6 $PRIVATE_REGISTRY/tigera/prometheus-operator:v3.22.6
 
-   docker tag quay.io/tigera/queryserver:v3.22.5 $PRIVATE_REGISTRY/tigera/queryserver:v3.22.5
+   docker tag quay.io/tigera/queryserver:v3.22.6 $PRIVATE_REGISTRY/tigera/queryserver:v3.22.6
 
-   docker tag quay.io/tigera/cni:v3.22.5 $PRIVATE_REGISTRY/tigera/cni:v3.22.5
+   docker tag quay.io/tigera/cni:v3.22.6 $PRIVATE_REGISTRY/tigera/cni:v3.22.6
 
-   docker tag quay.io/tigera/prometheus-service:v3.22.5 $PRIVATE_REGISTRY/tigera/prometheus-service:v3.22.5
+   docker tag quay.io/tigera/prometheus-service:v3.22.6 $PRIVATE_REGISTRY/tigera/prometheus-service:v3.22.6
 
-   docker tag quay.io/tigera/typha:v3.22.5 $PRIVATE_REGISTRY/tigera/typha:v3.22.5
+   docker tag quay.io/tigera/typha:v3.22.6 $PRIVATE_REGISTRY/tigera/typha:v3.22.6
 
-   docker tag quay.io/tigera/ui-apis:v3.22.5 $PRIVATE_REGISTRY/tigera/ui-apis:v3.22.5
+   docker tag quay.io/tigera/ui-apis:v3.22.6 $PRIVATE_REGISTRY/tigera/ui-apis:v3.22.6
 
-   docker tag quay.io/tigera/voltron:v3.22.5 $PRIVATE_REGISTRY/tigera/voltron:v3.22.5
+   docker tag quay.io/tigera/voltron:v3.22.6 $PRIVATE_REGISTRY/tigera/voltron:v3.22.6
 
-   docker tag quay.io/tigera/waf-http-filter:v3.22.5 $PRIVATE_REGISTRY/tigera/waf-http-filter:v3.22.5
+   docker tag quay.io/tigera/waf-http-filter:v3.22.6 $PRIVATE_REGISTRY/tigera/waf-http-filter:v3.22.6
 
-   docker tag quay.io/tigera/webhooks-processor:v3.22.5 $PRIVATE_REGISTRY/tigera/webhooks-processor:v3.22.5
+   docker tag quay.io/tigera/webhooks-processor:v3.22.6 $PRIVATE_REGISTRY/tigera/webhooks-processor:v3.22.6
    ```
 
 3. Push the images to your private registry.
 
    ```bash
-   docker push $PRIVATE_REGISTRY/tigera/operator:v1.40.11
+   docker push $PRIVATE_REGISTRY/tigera/operator:v1.40.12
 
-   docker push $PRIVATE_REGISTRY/tigera/alertmanager:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/alertmanager:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/apiserver:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/apiserver:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/calicoctl:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/calicoctl:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/calicoq:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/calicoq:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/compliance-benchmarker:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/compliance-benchmarker:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/compliance-controller:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/compliance-controller:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/compliance-reporter:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/compliance-reporter:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/compliance-server:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/compliance-server:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/compliance-snapshotter:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/compliance-snapshotter:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/csi:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/csi:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/node-driver-registrar:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/node-driver-registrar:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/deep-packet-inspection:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/deep-packet-inspection:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/dex:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/dex:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/dikastes:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/dikastes:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/egress-gateway:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/egress-gateway:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/intrusion-detection-job-installer:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/intrusion-detection-job-installer:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/elasticsearch:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/elasticsearch:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/elasticsearch-metrics:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/elasticsearch-metrics:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/eck-operator:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/eck-operator:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/envoy:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/envoy:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/es-gateway:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/es-gateway:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/firewall-integration:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/firewall-integration:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/pod2daemon-flexvol:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/pod2daemon-flexvol:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/fluentd:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/fluentd:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/envoy-gateway:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/envoy-gateway:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/envoy-proxy:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/envoy-proxy:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/envoy-ratelimit:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/envoy-ratelimit:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/gateway-l7-collector:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/gateway-l7-collector:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/guardian:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/guardian:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/ingress-collector:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/ingress-collector:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/intrusion-detection-controller:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/intrusion-detection-controller:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/istio-install-cni:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/istio-install-cni:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/istio-pilot:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/istio-pilot:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/istio-proxyv2:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/istio-proxyv2:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/istio-ztunnel:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/istio-ztunnel:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/key-cert-provisioner:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/key-cert-provisioner:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/kibana:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/kibana:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/kube-controllers:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/kube-controllers:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/l7-admission-controller:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/l7-admission-controller:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/l7-collector:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/l7-collector:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/license-agent:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/license-agent:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/linseed:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/linseed:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/manager:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/manager:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/node:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/node:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/packetcapture:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/packetcapture:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/policy-recommendation:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/policy-recommendation:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/prometheus:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/prometheus:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/prometheus-config-reloader:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/prometheus-config-reloader:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/prometheus-operator:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/prometheus-operator:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/queryserver:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/queryserver:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/cni:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/cni:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/prometheus-service:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/prometheus-service:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/typha:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/typha:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/ui-apis:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/ui-apis:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/voltron:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/voltron:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/waf-http-filter:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/waf-http-filter:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/tigera/webhooks-processor:v3.22.5
+   docker push $PRIVATE_REGISTRY/tigera/webhooks-processor:v3.22.6
    ```
 
    > **WARNING:**
@@ -6994,11 +6994,11 @@ In order to install images from your private registry, you must first pull the i
    For hybrid Linux + Windows clusters, use `crane cp` on the following Windows images to copy them to your private registry.
 
    ```bash
-   crane cp quay.io/tigera/fluentd-windows:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd-windows:v3.22.5
+   crane cp quay.io/tigera/fluentd-windows:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd-windows:v3.22.6
 
-   crane cp quay.io/tigera/node-windows:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/node-windows:v3.22.5
+   crane cp quay.io/tigera/node-windows:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/node-windows:v3.22.6
 
-   crane cp quay.io/tigera/cni-windows:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/cni-windows:v3.22.5
+   crane cp quay.io/tigera/cni-windows:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/cni-windows:v3.22.6
    ```
 
    > **WARNING:**
@@ -7110,359 +7110,359 @@ In order to install images from your private registry, you must first pull the i
 1. Use the following commands to pull the required <!-- -->Calico Enterprise<!-- --> images.
 
 2. ```bash
-   docker pull quay.io/tigera/operator:v1.40.11
+   docker pull quay.io/tigera/operator:v1.40.12
 
-   docker pull quay.io/tigera/alertmanager:v3.22.5
+   docker pull quay.io/tigera/alertmanager:v3.22.6
 
-   docker pull quay.io/tigera/apiserver:v3.22.5
+   docker pull quay.io/tigera/apiserver:v3.22.6
 
-   docker pull quay.io/tigera/calicoctl:v3.22.5
+   docker pull quay.io/tigera/calicoctl:v3.22.6
 
-   docker pull quay.io/tigera/calicoq:v3.22.5
+   docker pull quay.io/tigera/calicoq:v3.22.6
 
-   docker pull quay.io/tigera/compliance-benchmarker:v3.22.5
+   docker pull quay.io/tigera/compliance-benchmarker:v3.22.6
 
-   docker pull quay.io/tigera/compliance-controller:v3.22.5
+   docker pull quay.io/tigera/compliance-controller:v3.22.6
 
-   docker pull quay.io/tigera/compliance-reporter:v3.22.5
+   docker pull quay.io/tigera/compliance-reporter:v3.22.6
 
-   docker pull quay.io/tigera/compliance-server:v3.22.5
+   docker pull quay.io/tigera/compliance-server:v3.22.6
 
-   docker pull quay.io/tigera/compliance-snapshotter:v3.22.5
+   docker pull quay.io/tigera/compliance-snapshotter:v3.22.6
 
-   docker pull quay.io/tigera/csi:v3.22.5
+   docker pull quay.io/tigera/csi:v3.22.6
 
-   docker pull quay.io/tigera/node-driver-registrar:v3.22.5
+   docker pull quay.io/tigera/node-driver-registrar:v3.22.6
 
-   docker pull quay.io/tigera/deep-packet-inspection:v3.22.5
+   docker pull quay.io/tigera/deep-packet-inspection:v3.22.6
 
-   docker pull quay.io/tigera/dex:v3.22.5
+   docker pull quay.io/tigera/dex:v3.22.6
 
-   docker pull quay.io/tigera/dikastes:v3.22.5
+   docker pull quay.io/tigera/dikastes:v3.22.6
 
-   docker pull quay.io/tigera/egress-gateway:v3.22.5
+   docker pull quay.io/tigera/egress-gateway:v3.22.6
 
-   docker pull quay.io/tigera/intrusion-detection-job-installer:v3.22.5
+   docker pull quay.io/tigera/intrusion-detection-job-installer:v3.22.6
 
-   docker pull quay.io/tigera/elasticsearch:v3.22.5
+   docker pull quay.io/tigera/elasticsearch:v3.22.6
 
-   docker pull quay.io/tigera/elasticsearch-metrics:v3.22.5
+   docker pull quay.io/tigera/elasticsearch-metrics:v3.22.6
 
-   docker pull quay.io/tigera/eck-operator:v3.22.5
+   docker pull quay.io/tigera/eck-operator:v3.22.6
 
-   docker pull quay.io/tigera/envoy:v3.22.5
+   docker pull quay.io/tigera/envoy:v3.22.6
 
-   docker pull quay.io/tigera/es-gateway:v3.22.5
+   docker pull quay.io/tigera/es-gateway:v3.22.6
 
-   docker pull quay.io/tigera/firewall-integration:v3.22.5
+   docker pull quay.io/tigera/firewall-integration:v3.22.6
 
-   docker pull quay.io/tigera/pod2daemon-flexvol:v3.22.5
+   docker pull quay.io/tigera/pod2daemon-flexvol:v3.22.6
 
-   docker pull quay.io/tigera/fluentd:v3.22.5
+   docker pull quay.io/tigera/fluentd:v3.22.6
 
-   docker pull quay.io/tigera/envoy-gateway:v3.22.5
+   docker pull quay.io/tigera/envoy-gateway:v3.22.6
 
-   docker pull quay.io/tigera/envoy-proxy:v3.22.5
+   docker pull quay.io/tigera/envoy-proxy:v3.22.6
 
-   docker pull quay.io/tigera/envoy-ratelimit:v3.22.5
+   docker pull quay.io/tigera/envoy-ratelimit:v3.22.6
 
-   docker pull quay.io/tigera/gateway-l7-collector:v3.22.5
+   docker pull quay.io/tigera/gateway-l7-collector:v3.22.6
 
-   docker pull quay.io/tigera/guardian:v3.22.5
+   docker pull quay.io/tigera/guardian:v3.22.6
 
-   docker pull quay.io/tigera/ingress-collector:v3.22.5
+   docker pull quay.io/tigera/ingress-collector:v3.22.6
 
-   docker pull quay.io/tigera/intrusion-detection-controller:v3.22.5
+   docker pull quay.io/tigera/intrusion-detection-controller:v3.22.6
 
-   docker pull quay.io/tigera/istio-install-cni:v3.22.5
+   docker pull quay.io/tigera/istio-install-cni:v3.22.6
 
-   docker pull quay.io/tigera/istio-pilot:v3.22.5
+   docker pull quay.io/tigera/istio-pilot:v3.22.6
 
-   docker pull quay.io/tigera/istio-proxyv2:v3.22.5
+   docker pull quay.io/tigera/istio-proxyv2:v3.22.6
 
-   docker pull quay.io/tigera/istio-ztunnel:v3.22.5
+   docker pull quay.io/tigera/istio-ztunnel:v3.22.6
 
-   docker pull quay.io/tigera/key-cert-provisioner:v3.22.5
+   docker pull quay.io/tigera/key-cert-provisioner:v3.22.6
 
-   docker pull quay.io/tigera/kibana:v3.22.5
+   docker pull quay.io/tigera/kibana:v3.22.6
 
-   docker pull quay.io/tigera/kube-controllers:v3.22.5
+   docker pull quay.io/tigera/kube-controllers:v3.22.6
 
-   docker pull quay.io/tigera/l7-admission-controller:v3.22.5
+   docker pull quay.io/tigera/l7-admission-controller:v3.22.6
 
-   docker pull quay.io/tigera/l7-collector:v3.22.5
+   docker pull quay.io/tigera/l7-collector:v3.22.6
 
-   docker pull quay.io/tigera/license-agent:v3.22.5
+   docker pull quay.io/tigera/license-agent:v3.22.6
 
-   docker pull quay.io/tigera/linseed:v3.22.5
+   docker pull quay.io/tigera/linseed:v3.22.6
 
-   docker pull quay.io/tigera/manager:v3.22.5
+   docker pull quay.io/tigera/manager:v3.22.6
 
-   docker pull quay.io/tigera/node:v3.22.5
+   docker pull quay.io/tigera/node:v3.22.6
 
-   docker pull quay.io/tigera/packetcapture:v3.22.5
+   docker pull quay.io/tigera/packetcapture:v3.22.6
 
-   docker pull quay.io/tigera/policy-recommendation:v3.22.5
+   docker pull quay.io/tigera/policy-recommendation:v3.22.6
 
-   docker pull quay.io/tigera/prometheus:v3.22.5
+   docker pull quay.io/tigera/prometheus:v3.22.6
 
-   docker pull quay.io/tigera/prometheus-config-reloader:v3.22.5
+   docker pull quay.io/tigera/prometheus-config-reloader:v3.22.6
 
-   docker pull quay.io/tigera/prometheus-operator:v3.22.5
+   docker pull quay.io/tigera/prometheus-operator:v3.22.6
 
-   docker pull quay.io/tigera/queryserver:v3.22.5
+   docker pull quay.io/tigera/queryserver:v3.22.6
 
-   docker pull quay.io/tigera/cni:v3.22.5
+   docker pull quay.io/tigera/cni:v3.22.6
 
-   docker pull quay.io/tigera/prometheus-service:v3.22.5
+   docker pull quay.io/tigera/prometheus-service:v3.22.6
 
-   docker pull quay.io/tigera/typha:v3.22.5
+   docker pull quay.io/tigera/typha:v3.22.6
 
-   docker pull quay.io/tigera/ui-apis:v3.22.5
+   docker pull quay.io/tigera/ui-apis:v3.22.6
 
-   docker pull quay.io/tigera/voltron:v3.22.5
+   docker pull quay.io/tigera/voltron:v3.22.6
 
-   docker pull quay.io/tigera/waf-http-filter:v3.22.5
+   docker pull quay.io/tigera/waf-http-filter:v3.22.6
 
-   docker pull quay.io/tigera/webhooks-processor:v3.22.5
+   docker pull quay.io/tigera/webhooks-processor:v3.22.6
    ```
 
    Retag the images with the name of your private registry `$PRIVATE_REGISTRY` and<!-- --> `$IMAGE_PATH`.
 
 3. ```bash
-   docker tag quay.io/tigera/operator:v1.40.11 $PRIVATE_REGISTRY/$IMAGE_PATH/operator:v1.40.11
+   docker tag quay.io/tigera/operator:v1.40.12 $PRIVATE_REGISTRY/$IMAGE_PATH/operator:v1.40.12
 
-   docker tag quay.io/tigera/alertmanager:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/alertmanager:v3.22.5
+   docker tag quay.io/tigera/alertmanager:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/alertmanager:v3.22.6
 
-   docker tag quay.io/tigera/apiserver:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/apiserver:v3.22.5
+   docker tag quay.io/tigera/apiserver:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/apiserver:v3.22.6
 
-   docker tag quay.io/tigera/calicoctl:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/calicoctl:v3.22.5
+   docker tag quay.io/tigera/calicoctl:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/calicoctl:v3.22.6
 
-   docker tag quay.io/tigera/calicoq:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/calicoq:v3.22.5
+   docker tag quay.io/tigera/calicoq:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/calicoq:v3.22.6
 
-   docker tag quay.io/tigera/compliance-benchmarker:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-benchmarker:v3.22.5
+   docker tag quay.io/tigera/compliance-benchmarker:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-benchmarker:v3.22.6
 
-   docker tag quay.io/tigera/compliance-controller:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-controller:v3.22.5
+   docker tag quay.io/tigera/compliance-controller:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-controller:v3.22.6
 
-   docker tag quay.io/tigera/compliance-reporter:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-reporter:v3.22.5
+   docker tag quay.io/tigera/compliance-reporter:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-reporter:v3.22.6
 
-   docker tag quay.io/tigera/compliance-server:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-server:v3.22.5
+   docker tag quay.io/tigera/compliance-server:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-server:v3.22.6
 
-   docker tag quay.io/tigera/compliance-snapshotter:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-snapshotter:v3.22.5
+   docker tag quay.io/tigera/compliance-snapshotter:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-snapshotter:v3.22.6
 
-   docker tag quay.io/tigera/csi:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/csi:v3.22.5
+   docker tag quay.io/tigera/csi:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/csi:v3.22.6
 
-   docker tag quay.io/tigera/node-driver-registrar:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/node-driver-registrar:v3.22.5
+   docker tag quay.io/tigera/node-driver-registrar:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/node-driver-registrar:v3.22.6
 
-   docker tag quay.io/tigera/deep-packet-inspection:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/deep-packet-inspection:v3.22.5
+   docker tag quay.io/tigera/deep-packet-inspection:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/deep-packet-inspection:v3.22.6
 
-   docker tag quay.io/tigera/dex:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/dex:v3.22.5
+   docker tag quay.io/tigera/dex:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/dex:v3.22.6
 
-   docker tag quay.io/tigera/dikastes:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/dikastes:v3.22.5
+   docker tag quay.io/tigera/dikastes:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/dikastes:v3.22.6
 
-   docker tag quay.io/tigera/egress-gateway:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/egress-gateway:v3.22.5
+   docker tag quay.io/tigera/egress-gateway:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/egress-gateway:v3.22.6
 
-   docker tag quay.io/tigera/intrusion-detection-job-installer:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-job-installer:v3.22.5
+   docker tag quay.io/tigera/intrusion-detection-job-installer:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-job-installer:v3.22.6
 
-   docker tag quay.io/tigera/elasticsearch:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch:v3.22.5
+   docker tag quay.io/tigera/elasticsearch:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch:v3.22.6
 
-   docker tag quay.io/tigera/elasticsearch-metrics:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch-metrics:v3.22.5
+   docker tag quay.io/tigera/elasticsearch-metrics:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch-metrics:v3.22.6
 
-   docker tag quay.io/tigera/eck-operator:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/eck-operator:v3.22.5
+   docker tag quay.io/tigera/eck-operator:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/eck-operator:v3.22.6
 
-   docker tag quay.io/tigera/envoy:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy:v3.22.5
+   docker tag quay.io/tigera/envoy:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy:v3.22.6
 
-   docker tag quay.io/tigera/es-gateway:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/es-gateway:v3.22.5
+   docker tag quay.io/tigera/es-gateway:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/es-gateway:v3.22.6
 
-   docker tag quay.io/tigera/firewall-integration:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/firewall-integration:v3.22.5
+   docker tag quay.io/tigera/firewall-integration:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/firewall-integration:v3.22.6
 
-   docker tag quay.io/tigera/pod2daemon-flexvol:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/pod2daemon-flexvol:v3.22.5
+   docker tag quay.io/tigera/pod2daemon-flexvol:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/pod2daemon-flexvol:v3.22.6
 
-   docker tag quay.io/tigera/fluentd:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd:v3.22.5
+   docker tag quay.io/tigera/fluentd:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd:v3.22.6
 
-   docker tag quay.io/tigera/envoy-gateway:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-gateway:v3.22.5
+   docker tag quay.io/tigera/envoy-gateway:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-gateway:v3.22.6
 
-   docker tag quay.io/tigera/envoy-proxy:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-proxy:v3.22.5
+   docker tag quay.io/tigera/envoy-proxy:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-proxy:v3.22.6
 
-   docker tag quay.io/tigera/envoy-ratelimit:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-ratelimit:v3.22.5
+   docker tag quay.io/tigera/envoy-ratelimit:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-ratelimit:v3.22.6
 
-   docker tag quay.io/tigera/gateway-l7-collector:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/gateway-l7-collector:v3.22.5
+   docker tag quay.io/tigera/gateway-l7-collector:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/gateway-l7-collector:v3.22.6
 
-   docker tag quay.io/tigera/guardian:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/guardian:v3.22.5
+   docker tag quay.io/tigera/guardian:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/guardian:v3.22.6
 
-   docker tag quay.io/tigera/ingress-collector:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/ingress-collector:v3.22.5
+   docker tag quay.io/tigera/ingress-collector:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/ingress-collector:v3.22.6
 
-   docker tag quay.io/tigera/intrusion-detection-controller:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-controller:v3.22.5
+   docker tag quay.io/tigera/intrusion-detection-controller:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-controller:v3.22.6
 
-   docker tag quay.io/tigera/istio-install-cni:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-install-cni:v3.22.5
+   docker tag quay.io/tigera/istio-install-cni:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-install-cni:v3.22.6
 
-   docker tag quay.io/tigera/istio-pilot:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-pilot:v3.22.5
+   docker tag quay.io/tigera/istio-pilot:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-pilot:v3.22.6
 
-   docker tag quay.io/tigera/istio-proxyv2:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-proxyv2:v3.22.5
+   docker tag quay.io/tigera/istio-proxyv2:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-proxyv2:v3.22.6
 
-   docker tag quay.io/tigera/istio-ztunnel:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-ztunnel:v3.22.5
+   docker tag quay.io/tigera/istio-ztunnel:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/istio-ztunnel:v3.22.6
 
-   docker tag quay.io/tigera/key-cert-provisioner:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/key-cert-provisioner:v3.22.5
+   docker tag quay.io/tigera/key-cert-provisioner:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/key-cert-provisioner:v3.22.6
 
-   docker tag quay.io/tigera/kibana:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/kibana:v3.22.5
+   docker tag quay.io/tigera/kibana:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/kibana:v3.22.6
 
-   docker tag quay.io/tigera/kube-controllers:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/kube-controllers:v3.22.5
+   docker tag quay.io/tigera/kube-controllers:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/kube-controllers:v3.22.6
 
-   docker tag quay.io/tigera/l7-admission-controller:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/l7-admission-controller:v3.22.5
+   docker tag quay.io/tigera/l7-admission-controller:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/l7-admission-controller:v3.22.6
 
-   docker tag quay.io/tigera/l7-collector:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/l7-collector:v3.22.5
+   docker tag quay.io/tigera/l7-collector:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/l7-collector:v3.22.6
 
-   docker tag quay.io/tigera/license-agent:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/license-agent:v3.22.5
+   docker tag quay.io/tigera/license-agent:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/license-agent:v3.22.6
 
-   docker tag quay.io/tigera/linseed:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/linseed:v3.22.5
+   docker tag quay.io/tigera/linseed:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/linseed:v3.22.6
 
-   docker tag quay.io/tigera/manager:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/manager:v3.22.5
+   docker tag quay.io/tigera/manager:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/manager:v3.22.6
 
-   docker tag quay.io/tigera/node:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/node:v3.22.5
+   docker tag quay.io/tigera/node:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/node:v3.22.6
 
-   docker tag quay.io/tigera/packetcapture:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/packetcapture:v3.22.5
+   docker tag quay.io/tigera/packetcapture:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/packetcapture:v3.22.6
 
-   docker tag quay.io/tigera/policy-recommendation:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/policy-recommendation:v3.22.5
+   docker tag quay.io/tigera/policy-recommendation:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/policy-recommendation:v3.22.6
 
-   docker tag quay.io/tigera/prometheus:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus:v3.22.5
+   docker tag quay.io/tigera/prometheus:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus:v3.22.6
 
-   docker tag quay.io/tigera/prometheus-config-reloader:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-config-reloader:v3.22.5
+   docker tag quay.io/tigera/prometheus-config-reloader:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-config-reloader:v3.22.6
 
-   docker tag quay.io/tigera/prometheus-operator:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-operator:v3.22.5
+   docker tag quay.io/tigera/prometheus-operator:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-operator:v3.22.6
 
-   docker tag quay.io/tigera/queryserver:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/queryserver:v3.22.5
+   docker tag quay.io/tigera/queryserver:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/queryserver:v3.22.6
 
-   docker tag quay.io/tigera/cni:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/cni:v3.22.5
+   docker tag quay.io/tigera/cni:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/cni:v3.22.6
 
-   docker tag quay.io/tigera/prometheus-service:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-service:v3.22.5
+   docker tag quay.io/tigera/prometheus-service:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-service:v3.22.6
 
-   docker tag quay.io/tigera/typha:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/typha:v3.22.5
+   docker tag quay.io/tigera/typha:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/typha:v3.22.6
 
-   docker tag quay.io/tigera/ui-apis:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/ui-apis:v3.22.5
+   docker tag quay.io/tigera/ui-apis:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/ui-apis:v3.22.6
 
-   docker tag quay.io/tigera/voltron:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/voltron:v3.22.5
+   docker tag quay.io/tigera/voltron:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/voltron:v3.22.6
 
-   docker tag quay.io/tigera/waf-http-filter:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/waf-http-filter:v3.22.5
+   docker tag quay.io/tigera/waf-http-filter:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/waf-http-filter:v3.22.6
 
-   docker tag quay.io/tigera/webhooks-processor:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/webhooks-processor:v3.22.5
+   docker tag quay.io/tigera/webhooks-processor:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/webhooks-processor:v3.22.6
    ```
 
    Push the images to your private registry.
 
 4. ```bash
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/operator:v1.40.11docker push $PRIVATE_REGISTRY/$IMAGE_PATH/alertmanager:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/operator:v1.40.12docker push $PRIVATE_REGISTRY/$IMAGE_PATH/alertmanager:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/apiserver:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/apiserver:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/calicoctl:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/calicoctl:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/calicoq:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/calicoq:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-benchmarker:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-benchmarker:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-controller:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-controller:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-reporter:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-reporter:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-server:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-server:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-snapshotter:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/compliance-snapshotter:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/csi:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/csi:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/node-driver-registrar:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/node-driver-registrar:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/deep-packet-inspection:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/deep-packet-inspection:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/dex:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/dex:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/dikastes:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/dikastes:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/egress-gateway:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/egress-gateway:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-job-installer:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-job-installer:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch-metrics:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/elasticsearch-metrics:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/eck-operator:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/eck-operator:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/es-gateway:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/es-gateway:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/firewall-integration:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/firewall-integration:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/pod2daemon-flexvol:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/pod2daemon-flexvol:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-gateway:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-gateway:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-proxy:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-proxy:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-ratelimit:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/envoy-ratelimit:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/gateway-l7-collector:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/gateway-l7-collector:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/guardian:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/guardian:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/ingress-collector:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/ingress-collector:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-controller:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/intrusion-detection-controller:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-install-cni:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-install-cni:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-pilot:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-pilot:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-proxyv2:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-proxyv2:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-ztunnel:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/istio-ztunnel:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/key-cert-provisioner:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/key-cert-provisioner:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/kibana:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/kibana:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/kube-controllers:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/kube-controllers:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/l7-admission-controller:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/l7-admission-controller:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/l7-collector:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/l7-collector:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/license-agent:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/license-agent:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/linseed:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/linseed:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/manager:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/manager:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/node:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/node:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/packetcapture:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/packetcapture:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/policy-recommendation:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/policy-recommendation:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-config-reloader:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-config-reloader:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-operator:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-operator:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/queryserver:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/queryserver:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/cni:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/cni:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-service:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/prometheus-service:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/typha:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/typha:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/ui-apis:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/ui-apis:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/voltron:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/voltron:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/waf-http-filter:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/waf-http-filter:v3.22.6
 
-   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/webhooks-processor:v3.22.5
+   docker push $PRIVATE_REGISTRY/$IMAGE_PATH/webhooks-processor:v3.22.6
    ```
 
    > **WARNING:**
@@ -7482,11 +7482,11 @@ In order to install images from your private registry, you must first pull the i
    For hybrid Linux + Windows clusters, use `crane cp` on the following Windows images to copy them to your private registry.
 
    ```bash
-   crane cp quay.io/tigera/fluentd-windows:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd-windows:v3.22.5
+   crane cp quay.io/tigera/fluentd-windows:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/fluentd-windows:v3.22.6
 
-   crane cp quay.io/tigera/node-windows:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/node-windows:v3.22.5
+   crane cp quay.io/tigera/node-windows:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/node-windows:v3.22.6
 
-   crane cp quay.io/tigera/cni-windows:v3.22.5 $PRIVATE_REGISTRY/$IMAGE_PATH/cni-windows:v3.22.5
+   crane cp quay.io/tigera/cni-windows:v3.22.6 $PRIVATE_REGISTRY/$IMAGE_PATH/cni-windows:v3.22.6
    ```
 
    > **WARNING:**
@@ -8197,17 +8197,17 @@ Calico Enterprise creates a default-deny for the calico-system namespace. If you
 1. Get the Helm chart
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/charts/tigera-operator-v3.22.5-0.tgz
+   curl -O -L https://downloads.tigera.io/ee/charts/tigera-operator-v3.22.6-0.tgz
    ```
 
 2. Install the Calico Enterprise custom resource definitions.
 
    ```bash
-   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus-operator-crds.yaml
+   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus-operator-crds.yaml
 
-   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/eck-operator-crds.yaml
+   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/eck-operator-crds.yaml
    ```
 
 3. If your cluster is v3.19 or older, update `values.yaml` with `packetCaptureAPI` enabled to true.
@@ -8225,7 +8225,7 @@ Calico Enterprise creates a default-deny for the calico-system namespace. If you
    If you are using default `values.yaml`, copy the custom `values.yaml` and update packetCaptureAPI's `enabled` to `true`. Then, replace `<path-to-values.yaml>` in the next step with this modified `values.yaml` for the Helm upgrade.
 
    ```bash
-   helm show values ./tigera-operator-v3.22.5-0.tgz >values.yaml
+   helm show values ./tigera-operator-v3.22.6-0.tgz >values.yaml
    ```
 
 4. Optional: Compliance and packetcapture features are optional. To enable or maintain the enabled status, review the `values.yaml` file and set the flag to `enabled: true`.
@@ -8247,13 +8247,13 @@ Calico Enterprise creates a default-deny for the calico-system namespace. If you
    If you are using default `values.yaml`, copy the custom `values.yaml` and update compliance and packetCaptureAPI's `enabled` to `true`. Then, replace `<path-to-values.yaml>` in the next step with this modified `values.yaml` for the Helm upgrade.
 
    ```bash
-   helm show values ./tigera-operator-v3.22.5-0.tgz >values.yaml
+   helm show values ./tigera-operator-v3.22.6-0.tgz >values.yaml
    ```
 
 5. Run the Helm upgrade command for `tigera-operator` and make sure to either update `values.yaml` with your configuration or use custom `values.yaml` file:
 
 ```bash
-helm upgrade calico-enterprise --values=<path-to-values-yaml> tigera-operator-v3.22.5-0.tgz \
+helm upgrade calico-enterprise --values=<path-to-values-yaml> tigera-operator-v3.22.6-0.tgz \
 
 --set-file imagePullSecrets.tigera-pull-secret=<path-to-pull-secret>,tigera-prometheus-operator.imagePullSecrets.tigera-pull-secret=<path-to-pull-secret> \
 
@@ -8331,7 +8331,7 @@ For Calico Enterprise, upgrading multi-cluster management setups must include up
 1. Download the new manifests for Tigera Operator.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Download the new manifests for Prometheus operator.
@@ -8341,7 +8341,7 @@ For Calico Enterprise, upgrading multi-cluster management setups must include up
    > If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. If you previously<!-- --> [installed using a private registry](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry), you will need to<!-- --> [push the new images<!-- --> ](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#push-calico-enterprise-images-to-your-private-registry)and then<!-- --> [update the manifest](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#run-the-operator-using-images-from-your-private-registry) <!-- -->downloaded in the previous step.
@@ -8499,7 +8499,7 @@ If the `active-namespace` is `tigera-operator-enterprise`, then the cluster was 
 1. Download the new manifests for Tigera Operator.
 
    ```bash
-   curl -L -o tigera-operator.yaml https://downloads.tigera.io/ee/v3.22.5/manifests/aks/tigera-operator-upgrade.yaml
+   curl -L -o tigera-operator.yaml https://downloads.tigera.io/ee/v3.22.6/manifests/aks/tigera-operator-upgrade.yaml
    ```
 
 2. Download the new manifests for Prometheus operator.
@@ -8509,7 +8509,7 @@ If the `active-namespace` is `tigera-operator-enterprise`, then the cluster was 
    > If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. If you previously<!-- --> [installed using a private registry](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry), you will need to<!-- --> [push the new images<!-- --> ](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#push-calico-enterprise-images-to-your-private-registry)and then<!-- --> [update the manifest](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#run-the-operator-using-images-from-your-private-registry) <!-- -->downloaded in the previous step.
@@ -8733,7 +8733,7 @@ Download the <!-- -->Calico Enterprise<!-- --> manifests for OpenShift and add t
 ```bash
 mkdir calico
 
-wget -qO- https://downloads.tigera.io/ee/v3.22.5/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico --exclude=03-cr-* --exclude=02-pull-secret.yaml
+wget -qO- https://downloads.tigera.io/ee/v3.22.6/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico --exclude=03-cr-* --exclude=02-pull-secret.yaml
 
 cp calico/* manifests/
 ```
@@ -8771,7 +8771,7 @@ cp calico/* manifests/
    >  that you manage yourself.
 
    ```bash
-   oc apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-prometheus-operator.yaml
+   oc apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-prometheus-operator.yaml
    ```
 
 3. If your cluster is a management cluster, apply a [ManagementCluster](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api#managementcluster) CR to your cluster.
@@ -8867,13 +8867,13 @@ cp calico/* manifests/
    If your cluster is a **managed** cluster, run this command:
 
    ```bash
-   kubectl delete -f https://downloads.tigera.io/ee/v3.22.5/manifests/default-tier-policies-managed.yaml
+   kubectl delete -f https://downloads.tigera.io/ee/v3.22.6/manifests/default-tier-policies-managed.yaml
    ```
 
    For other clusters, run this command:
 
    ```bash
-   kubectl delete -f https://downloads.tigera.io/ee/v3.22.5/manifests/default-tier-policies.yaml
+   kubectl delete -f https://downloads.tigera.io/ee/v3.22.6/manifests/default-tier-policies.yaml
    ```
 
 ### Upgrade from Calico to Calico Enterprise
@@ -8945,7 +8945,7 @@ If you receive error indicating the custom resource definitions or resource type
 1. Download the new manifests for Tigera Operator.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Download the new manifests for Prometheus operator.
@@ -8955,7 +8955,7 @@ If you receive error indicating the custom resource definitions or resource type
    > If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. If you previously<!-- --> [installed using a private registry](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry), you will need to<!-- --> [push the new images<!-- --> ](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#push-calico-enterprise-images-to-your-private-registry)and then<!-- --> [update the manifest](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#run-the-operator-using-images-from-your-private-registry) <!-- -->downloaded in the previous step.
@@ -8987,7 +8987,7 @@ If you receive error indicating the custom resource definitions or resource type
 7. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources-upgrade-from-calico.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources-upgrade-from-calico.yaml
    ```
 
 **Tab: EKS**
@@ -8995,7 +8995,7 @@ If you receive error indicating the custom resource definitions or resource type
 1. Download the new manifests for Tigera Operator.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Download the new manifests for Prometheus operator.
@@ -9005,7 +9005,7 @@ If you receive error indicating the custom resource definitions or resource type
    > If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. If you previously<!-- --> [installed using a private registry](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry), you will need to<!-- --> [push the new images<!-- --> ](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#push-calico-enterprise-images-to-your-private-registry)and then<!-- --> [update the manifest](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#run-the-operator-using-images-from-your-private-registry) <!-- -->downloaded in the previous step.
@@ -9037,7 +9037,7 @@ If you receive error indicating the custom resource definitions or resource type
 7. Install the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/eks/custom-resources-upgrade-from-calico.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/eks/custom-resources-upgrade-from-calico.yaml
    ```
 
 **Tab: AKS**
@@ -9063,7 +9063,7 @@ These upgrade instructions will upgrade your AKS clusters with Azure CNI and an 
 2. Download the new manifests for Tigera Operator.
 
    ```bash
-   curl -L -o tigera-operator.yaml https://downloads.tigera.io/ee/v3.22.5/manifests/aks/tigera-operator-upgrade.yaml
+   curl -L -o tigera-operator.yaml https://downloads.tigera.io/ee/v3.22.6/manifests/aks/tigera-operator-upgrade.yaml
    ```
 
 3. Download the new manifests for Prometheus operator.
@@ -9073,7 +9073,7 @@ These upgrade instructions will upgrade your AKS clusters with Azure CNI and an 
    > If you have an existing Prometheus operator in your cluster that you want to use, skip this step. To work with Calico Enterprise, your Prometheus operator must be v0.40.0 or higher.
 
    ```bash
-   curl -L -O https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   curl -L -O https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. If you previously<!-- --> [installed using a private registry](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry), you will need to<!-- --> [push the new images<!-- --> ](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#push-calico-enterprise-images-to-your-private-registry)and then<!-- --> [update the manifest](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry/private-registry-regular#run-the-operator-using-images-from-your-private-registry) <!-- -->downloaded in the previous step.
@@ -9105,7 +9105,7 @@ These upgrade instructions will upgrade your AKS clusters with Azure CNI and an 
 8. Download the custom resources manifest.
 
    ```bash
-   curl -L -o custom-resources.yaml https://downloads.tigera.io/ee/v3.22.5/manifests/aks/custom-resources-upgrade-from-calico.yaml
+   curl -L -o custom-resources.yaml https://downloads.tigera.io/ee/v3.22.6/manifests/aks/custom-resources-upgrade-from-calico.yaml
    ```
 
 9. If you are<!-- --> [installing using a private registry](https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/private-registry), you will need to update the manifest downloaded in the previous step. Update the `spec.registry`, `spec.imagePath`, and `spec.imagePrefix` fields of the installation resource with the registry name, image path, and image prefix of your private registry.
@@ -9168,17 +9168,17 @@ If you receive error indicating the custom resource definitions or resource type
 1. Get the Helm chart
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/charts/tigera-operator-v3.22.5-0.tgz
+   curl -O -L https://downloads.tigera.io/ee/charts/tigera-operator-v3.22.6-0.tgz
    ```
 
 2. Install the Calico Enterprise custom resource definitions.
 
    ```bash
-   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus-operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus-operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/eck-operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/eck-operator-crds.yaml
    ```
 
 3. [Configure a storage class for Calico Enterprise](https://docs.tigera.io/calico-enterprise/latest/operations/logstorage/create-storage)
@@ -9186,7 +9186,7 @@ If you receive error indicating the custom resource definitions or resource type
 4. Run the Helm upgrade command for `tigera-operator`:
 
    ```bash
-   helm upgrade calico tigera-operator-v3.22.5-0.tgz \
+   helm upgrade calico tigera-operator-v3.22.6-0.tgz \
 
    --set-file imagePullSecrets.tigera-pull-secret=<path/to/pull/secret>,tigera-prometheus-operator.imagePullSecrets.tigera-pull-secret=<path/to/pull/secret> \
 
@@ -9267,7 +9267,7 @@ Download the <!-- -->Calico Enterprise<!-- --> manifests for OpenShift and add t
 ```bash
 mkdir calico
 
-wget -qO- https://downloads.tigera.io/ee/v3.22.5/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico --exclude=03-cr-*
+wget -qO- https://downloads.tigera.io/ee/v3.22.6/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico --exclude=03-cr-*
 
 cp calico/* manifests/
 ```
@@ -9299,7 +9299,7 @@ sed -i "s/SECRET/${SECRET}/" manifests/02-pull-secret.yaml
 3. Create the custom resources for Calico Enterprise features, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   oc apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-enterprise-resources.yaml
+   oc apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-enterprise-resources.yaml
    ```
 
 4. Patch installation.
@@ -9349,7 +9349,7 @@ Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operato
 >  that you manage yourself.
 
 ```bash
-oc apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-prometheus-operator.yaml
+oc apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-prometheus-operator.yaml
 ```
 
 You can now monitor progress with the following command:
@@ -9377,6 +9377,7 @@ This feature is:
 
    | Patch version | Release archive link                                                                                                                               |
    | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | v3.22.6       | [https://downloads.tigera.io/ee/archives/release-v3.22.6-v1.40.12.tgz](https://downloads.tigera.io/ee/archives/release-v3.22.6-v1.40.12.tgz)       |
    | v3.22.5       | [https://downloads.tigera.io/ee/archives/release-v3.22.5-v1.40.11.tgz](https://downloads.tigera.io/ee/archives/release-v3.22.5-v1.40.11.tgz)       |
    | v3.22.4       | [https://downloads.tigera.io/ee/archives/release-v3.22.4-v1.40.10.tgz](https://downloads.tigera.io/ee/archives/release-v3.22.4-v1.40.10.tgz)       |
    | v3.22.3       | [https://downloads.tigera.io/ee/archives/release-v3.22.3-v1.40.9.tgz](https://downloads.tigera.io/ee/archives/release-v3.22.3-v1.40.9.tgz)         |
@@ -25681,7 +25682,7 @@ The basic workflow is:
 
 ### Create a config map with FortiGate and FortiManager information[​](#create-a-config-map-with-fortigate-and-fortimanager-information)
 
-1. In the [FortiGate ConfigMap manifest](https://downloads.tigera.io/ee/v3.22.5/manifests/fortinet-device-configmap.yaml), add your FortiGate firewall information in the data section, `tigera.firewall.fortigate`.
+1. In the [FortiGate ConfigMap manifest](https://downloads.tigera.io/ee/v3.22.6/manifests/fortinet-device-configmap.yaml), add your FortiGate firewall information in the data section, `tigera.firewall.fortigate`.
 
    Where:
 
@@ -25726,7 +25727,7 @@ The basic workflow is:
     vdom: fortigate-vdom2
    ```
 
-2. In the [FortiManager ConfigMap manifest](https://downloads.tigera.io/ee/v3.22.5/manifests/fortinet-device-configmap.yaml), add your FortiManager information in the data section, `tigera.firewall.fortimgr`.
+2. In the [FortiManager ConfigMap manifest](https://downloads.tigera.io/ee/v3.22.6/manifests/fortinet-device-configmap.yaml), add your FortiManager information in the data section, `tigera.firewall.fortimgr`.
 
    Where:
 
@@ -25765,7 +25766,7 @@ The basic workflow is:
 1. Apply the manifest.
 
    ```text
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/fortinet-device-configmap.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/fortinet-device-configmap.yaml
    ```
 
 ### Install FortiGate ApiKey and FortiManager password as secrets[​](#install-fortigate-apikey-and-fortimanager-password-as-secrets)
@@ -25805,7 +25806,7 @@ The basic workflow is:
 2. Apply the manifest.
 
    ```text
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/fortinet.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/fortinet.yaml
    ```
 
 ## Verify the integration[​](#verify-the-integration)
@@ -25900,7 +25901,7 @@ Create a [Calico Enterprise tier](https://docs.tigera.io/calico-enterprise/lates
     kubectl create namespace tigera-firewall-controller
    ```
 
-2. In this [FortiManager ConfigMap manifest](https://downloads.tigera.io/ee/v3.22.5/manifests/fortimanager-device-configmap.yaml), add your FortiManager device information in the data section: `tigera.firewall.fortimanager-policies`. For example:
+2. In this [FortiManager ConfigMap manifest](https://downloads.tigera.io/ee/v3.22.6/manifests/fortimanager-device-configmap.yaml), add your FortiManager device information in the data section: `tigera.firewall.fortimanager-policies`. For example:
 
    ```yaml
     tigera.firewall.fortimanager-policies: |
@@ -25943,7 +25944,7 @@ Create a [Calico Enterprise tier](https://docs.tigera.io/calico-enterprise/lates
 3. Apply the manifest.
 
    ```bash
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/fortimanager-device-configmap.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/fortimanager-device-configmap.yaml
    ```
 
 ## Install FortiManager password as secrets[​](#install-fortimanager-password-as-secrets)
@@ -25975,7 +25976,7 @@ kubectl create secret generic fortimgr-east1 \
 2. Apply the manifest.
 
    ```bash
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/fortimanager.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/fortimanager.yaml
    ```
 
 ## Verify the integration[​](#verify-the-integration)
@@ -32714,11 +32715,11 @@ Follow these steps in the cluster you intend to use as the managed cluster.
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -32736,7 +32737,7 @@ Follow these steps in the cluster you intend to use as the managed cluster.
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -32760,13 +32761,13 @@ Follow these steps in the cluster you intend to use as the managed cluster.
 5. (Optional) Compliance and packet capture features are optional. To enable these features during installation, download and review the custom-resources.yaml file. Uncomment the necessary CRs and use this custom-resources.yaml for installation.
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 6. Download the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    Remove the `Manager` custom resource from the manifest file.
@@ -32914,11 +32915,11 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -32936,7 +32937,7 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -32956,7 +32957,7 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
 5. Download the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
    Remove the `Manager` custom resource from the manifest file.
@@ -33104,11 +33105,11 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -33126,7 +33127,7 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -33146,7 +33147,7 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
 5. Download the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/eks/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/eks/custom-resources.yaml
    ```
 
    Remove the `Manager` custom resource from the manifest file.
@@ -33232,11 +33233,11 @@ Before you get started, make sure you have downloaded and configured the<!-- -->
 2. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -33254,7 +33255,7 @@ Before you get started, make sure you have downloaded and configured the<!-- -->
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. Install your pull secret.
@@ -33276,7 +33277,7 @@ Before you get started, make sure you have downloaded and configured the<!-- -->
 7. Download the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/eks/custom-resources-calico-cni.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/eks/custom-resources-calico-cni.yaml
    ```
 
    Remove the `Manager` custom resource from the manifest file.
@@ -33438,11 +33439,11 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
 1. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 2. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -33460,7 +33461,7 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 3. Install your pull secret.
@@ -33480,7 +33481,7 @@ kubectl create clusterrolebinding mcm-user-admin --serviceaccount=default:mcm-us
 5. Download the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/aks/custom-resources.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/aks/custom-resources.yaml
    ```
 
    Remove the `Manager` custom resource from the manifest file.
@@ -33544,11 +33545,11 @@ Wait until the `apiserver` shows a status of `Available`, then proceed to the ne
 2. Install the Tigera Operator and custom resource definitions.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
    ```
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
 3. Install the Prometheus operator and related custom resource definitions. The Prometheus operator will be used to deploy Prometheus server and Alertmanager to monitor <!-- -->Calico Enterprise<!-- --> metrics.
@@ -33566,7 +33567,7 @@ Wait until the `apiserver` shows a status of `Available`, then proceed to the ne
    > , your Prometheus operator must be v0.40.0 or higher.
 
    ```text
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-prometheus-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-prometheus-operator.yaml
    ```
 
 4. Install your pull secret.
@@ -33586,7 +33587,7 @@ Wait until the `apiserver` shows a status of `Available`, then proceed to the ne
 6. Download the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/aks/custom-resources-calico-cni.yaml
+   curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/aks/custom-resources-calico-cni.yaml
    ```
 
    Remove the `Manager` custom resource from the manifest file.
@@ -33836,7 +33837,7 @@ Download the <!-- -->Calico Enterprise<!-- --> manifests for OpenShift and add t
 ```bash
 mkdir calico
 
-wget -qO- https://downloads.tigera.io/ee/v3.22.5/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
+wget -qO- https://downloads.tigera.io/ee/v3.22.6/manifests/ocp.tgz | tar xvz --strip-components=1 -C calico
 
 cp calico/* manifests/
 ```
@@ -33890,7 +33891,7 @@ Calico Enterprise<!-- --> requires storage for logs and reports. Before finishin
 Download the Tigera custom resources. For more information on configuration options available in this manifest, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
 ```bash
-curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-enterprise-resources.yaml
+curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-enterprise-resources.yaml
 ```
 
 Remove the `Manager` custom resource from the manifest file.
@@ -33962,7 +33963,7 @@ Apply the <!-- -->Calico Enterprise<!-- --> manifests for the Prometheus operato
 >  that you manage yourself.
 
 ```bash
-oc create -f https://downloads.tigera.io/ee/v3.22.5/manifests/ocp/tigera-prometheus-operator.yaml
+oc create -f https://downloads.tigera.io/ee/v3.22.6/manifests/ocp/tigera-prometheus-operator.yaml
 ```
 
 You can now monitor progress with the following command:
@@ -33976,7 +33977,7 @@ When it shows all components with status `Available`, proceed to the next step.
 (Optional) Apply the full CRDs including descriptions.
 
 ```bash
-oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+oc apply --server-side --force-conflicts -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 ```
 
 #### Create the connection manifest for your managed cluster[​](#create-the-connection-manifest-for-your-managed-cluster)
@@ -34117,7 +34118,7 @@ helm repo add tigera-ee https://downloads.tigera.io/ee/charts
 
 helm repo update
 
-helm pull tigera-ee/tigera-operator --version v3.22.5
+helm pull tigera-ee/tigera-operator --version v3.22.6
 ```
 
 ### Prepare the Installation Configuration[​](#prepare-the-installation-configuration)
@@ -34249,7 +34250,7 @@ managedClusters:
 1. Install the Tigera Operator and custom resource definitions using the Helm 3 chart:
 
 ```bash
-helm install calico-enterprise tigera-operator-v3.22.5-0.tgz -f values.yaml \
+helm install calico-enterprise tigera-operator-v3.22.6-0.tgz -f values.yaml \
 
 --set-file imagePullSecrets.tigera-pull-secret=<path/to/pull/secret>,tigera-prometheus-operator.imagePullSecrets.tigera-pull-secret=<path/to/pull/secret> \
 
@@ -34361,7 +34362,7 @@ managementCluster:
 1. Install the Tigera Operator and custom resource definitions using the Helm 3 chart:
 
 ```bash
-helm install calico-enterprise tigera-operator-v3.22.5-0.tgz -f values.yaml \
+helm install calico-enterprise tigera-operator-v3.22.6-0.tgz -f values.yaml \
 
 --set-file imagePullSecrets.tigera-pull-secret=<path/to/pull/secret>,tigera-prometheus-operator.imagePullSecrets.tigera-pull-secret=<path/to/pull/secret> \
 
@@ -34467,7 +34468,7 @@ helm repo add tigera-ee https://downloads.tigera.io/ee/charts
 
 helm repo update
 
-helm pull tigera-ee/tigera-operator --version v3.22.5
+helm pull tigera-ee/tigera-operator --version v3.22.6
 ```
 
 ### Prepare the Installation Configuration[​](#prepare-the-installation-configuration)
@@ -34579,7 +34580,7 @@ managementClusterConnection:
 1. Install the Tigera Operator and custom resource definitions using the Helm 3 chart:
 
 ```bash
-helm install calico-enterprise tigera-operator-v3.22.5-0.tgz -f values.yaml \
+helm install calico-enterprise tigera-operator-v3.22.6-0.tgz -f values.yaml \
 
 --set-file imagePullSecrets.tigera-pull-secret=<path/to/pull/secret>,tigera-prometheus-operator.imagePullSecrets.tigera-pull-secret=<path/to/pull/secret> \
 
@@ -34981,7 +34982,7 @@ The steps in this section assume that a management cluster is up and running.
 3. Install the Tigera custom resources. For more information, see [the installation reference](https://docs.tigera.io/calico-enterprise/latest/reference/installation/api).
 
    ```bash
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
    ```
 
 4. Monitor the progress with the following command:
@@ -35113,13 +35114,13 @@ In this section, we will create a `kubeconfig` for each cluster. This `kubeconfi
 1. Create the ServiceAccount used by remote clusters for authentication:
 
    ```bash
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/federation-remote-sa.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/federation-remote-sa.yaml
    ```
 
 2. Create the ClusterRole and ClusterRoleBinding used by remote clusters for authorization:
 
    ```bash
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/federation-rem-rbac-kdd.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/federation-rem-rbac-kdd.yaml
    ```
 
 3. Create the ServiceAccount token that will be used in the `kubeconfig`:
@@ -36917,7 +36918,7 @@ In this section we will look at how to add Tor and VPN feeds to Calico Enterpris
    <!-- -->
 
    ```shell
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/threatdef/vpn-feed.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/threatdef/vpn-feed.yaml
    ```
 
    <!-- -->
@@ -36927,7 +36928,7 @@ In this section we will look at how to add Tor and VPN feeds to Calico Enterpris
    <!-- -->
 
    ```shell
-   kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/threatdef/tor-exit-feed.yaml
+   kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/threatdef/tor-exit-feed.yaml
    ```
 
 2. Now, you can monitor the Dashboard for any malicious activity. The dashboard can be found at the Calico Enterprise web console, go to "kibana" and then go to "Dashboard". Select "Tor-VPN Dashboard".
@@ -38609,13 +38610,13 @@ To run a report on demand:
    For management and standalone clusters:
 
    ```bash
-   curl -O https://downloads.tigera.io/ee/v3.22.5/manifests/compliance-reporter-pod.yaml
+   curl -O https://downloads.tigera.io/ee/v3.22.6/manifests/compliance-reporter-pod.yaml
    ```
 
    For managed clusters:
 
    ```bash
-   curl https://downloads.tigera.io/ee/v3.22.5/manifests/compliance-reporter-pod-managed.yaml -o compliance-reporter-pod.yaml
+   curl https://downloads.tigera.io/ee/v3.22.6/manifests/compliance-reporter-pod-managed.yaml -o compliance-reporter-pod.yaml
    ```
 
 2. Edit the template as follows:
@@ -38804,13 +38805,13 @@ To manually run a report:
    For management and standalone clusters:
 
    ```bash
-   curl -O https://downloads.tigera.io/ee/v3.22.5/manifests/compliance-reporter-pod.yaml
+   curl -O https://downloads.tigera.io/ee/v3.22.6/manifests/compliance-reporter-pod.yaml
    ```
 
    For managed clusters:
 
    ```bash
-   curl https://downloads.tigera.io/ee/v3.22.5/manifests/compliance-reporter-pod-managed.yaml -o compliance-reporter-pod.yaml
+   curl https://downloads.tigera.io/ee/v3.22.6/manifests/compliance-reporter-pod-managed.yaml -o compliance-reporter-pod.yaml
    ```
 
 2. Edit the template as follows:
@@ -41793,7 +41794,7 @@ Log into the host, open a terminal prompt, and navigate to the location where yo
 Use the following command to download the `calicoctl` binary.
 
 ```bash
-curl -o calicoctl -L https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl
+curl -o calicoctl -L https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl
 ```
 
 Set the file to be executable.
@@ -41815,13 +41816,13 @@ Use the following commands to download the `calicoctl` binary.
 - ARM64 (Apple Silicon):
 
   ```bash
-  curl -o calicoctl -L https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl-darwin-arm64
+  curl -o calicoctl -L https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl-darwin-arm64
   ```
 
 - AMD64 (Intel):
 
   ```bash
-  curl -o calicoctl -L https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl-darwin-amd64
+  curl -o calicoctl -L https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl-darwin-amd64
   ```
 
 Set the file to be executable.
@@ -41841,7 +41842,7 @@ Use the following PowerShell command to download the `calicoctl` binary.
 > **SUCCESS:** Consider running PowerShell as administrator and navigating to a location that's in your `PATH`. For example, `C:\Windows`.
 
 ```bash
-Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl-windows-amd64.exe" -OutFile "calicoctl.exe"
+Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl-windows-amd64.exe" -OutFile "calicoctl.exe"
 ```
 
 <!-- /tabs -->
@@ -41859,7 +41860,7 @@ Log into the host, open a terminal prompt, and navigate to the location where yo
 Use the following command to download the `calicoctl` binary.
 
 ```bash
-curl -o kubectl-calico -L https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl
+curl -o kubectl-calico -L https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl
 ```
 
 Set the file to be executable.
@@ -41881,13 +41882,13 @@ Use the following commands to download the `calicoctl` binary.
 - ARM64 (Apple Silicon):
 
   ```bash
-  curl -o kubectl-calico -L https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl-darwin-arm64
+  curl -o kubectl-calico -L https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl-darwin-arm64
   ```
 
 - AMD64 (Intel):
 
   ```bash
-  curl -o kubectl-calico -L https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl-darwin-amd64
+  curl -o kubectl-calico -L https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl-darwin-amd64
   ```
 
 Set the file to be executable.
@@ -41907,7 +41908,7 @@ Use the following PowerShell command to download the `calicoctl` binary.
 > **SUCCESS:** Consider running PowerShell as administrator and navigating to a location that's in your `PATH`. For example, `C:\Windows`.
 
 ```bash
-Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.22.5/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
+Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.22.6/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
 ```
 
 <!-- /tabs -->
@@ -41961,7 +41962,7 @@ You can now run any `calicoctl` subcommands through `kubectl calico`.
 5. Use the following commands to pull the `calicoctl` image from the Tigera registry.
 
    ```bash
-   docker pull quay.io/tigera/calicoctl:v3.22.5
+   docker pull quay.io/tigera/calicoctl:v3.22.6
    ```
 
 6. Confirm that the image has loaded by typing `docker images`.
@@ -41969,7 +41970,7 @@ You can now run any `calicoctl` subcommands through `kubectl calico`.
    ```bash
    REPOSITORY TAG IMAGE ID CREATED SIZE
 
-   tigera/calicoctl v3.22.5 e07d59b0eb8a 2 minutes ago 42MB
+   tigera/calicoctl v3.22.6 e07d59b0eb8a 2 minutes ago 42MB
    ```
 
 **Next step**:
@@ -42166,7 +42167,7 @@ For step-by-step instructions, refer to the section that corresponds to your des
 2. Use the following command to download the `calicoq` binary.
 
    ```text
-   curl -o calicoq -O -L https://downloads.tigera.io/ee/binaries/v3.22.5/calicoq
+   curl -o calicoq -O -L https://downloads.tigera.io/ee/binaries/v3.22.6/calicoq
    ```
 
 3. Set the file to be executable.
@@ -42220,7 +42221,7 @@ For step-by-step instructions, refer to the section that corresponds to your des
 5. Use the following commands to pull the `calicoq` image from the Tigera registry.
 
    ```bash
-   docker pull quay.io/tigera/calicoq:v3.22.5
+   docker pull quay.io/tigera/calicoq:v3.22.6
    ```
 
 6. Confirm that the image has loaded by typing `docker images`.
@@ -42228,7 +42229,7 @@ For step-by-step instructions, refer to the section that corresponds to your des
    ```bash
    REPOSITORY TAG IMAGE ID CREATED SIZE
 
-   tigera/calicoq v3.22.5 e07d59b0eb8a 2 minutes ago 42MB
+   tigera/calicoq v3.22.6 e07d59b0eb8a 2 minutes ago 42MB
    ```
 
 **Next step**:
@@ -43108,7 +43109,7 @@ export NAMESPACE=<my-prometheus-namespace>
 ```
 
 ```bash
-kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus/elasticsearch-metrics-service-monitor.yaml -n $NAMESPACE
+kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus/elasticsearch-metrics-service-monitor.yaml -n $NAMESPACE
 ```
 
 The .yamls have no namespace defined so when you apply `kubectl`, it is applied in the $NAMESPACE.
@@ -43150,7 +43151,7 @@ export NAMESPACE=<my-prometheus-namespace>
 ```
 
 ```bash
-kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus/fluentd-metrics-service-monitor.yaml -n $NAMESPACE
+kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus/fluentd-metrics-service-monitor.yaml -n $NAMESPACE
 ```
 
 The .yamls have no namespace defined so when you apply `kubectl`, it is applied in the $NAMESPACE.
@@ -43192,7 +43193,7 @@ export NAMESPACE=<my-prometheus-namespace>
 ```
 
 ```bash
-kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus/calico-node-monitor-service-monitor.yaml -n $NAMESPACE
+kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus/calico-node-monitor-service-monitor.yaml -n $NAMESPACE
 ```
 
 The .yamls have no namespace defined so when you apply `kubectl`, it is applied in $NAMESPACE.
@@ -43234,7 +43235,7 @@ export NAMESPACE=<my-prometheus-namespace>
 ```
 
 ```bash
-kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus/kube-controller-metrics-service-monitor.yaml -n $NAMESPACE
+kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus/kube-controller-metrics-service-monitor.yaml -n $NAMESPACE
 ```
 
 The .yamls have no namespace defined so when you apply `kubectl`, it is applied in the $NAMESPACE.
@@ -43318,7 +43319,7 @@ export NAMESPACE=<my-prometheus-namespace>
 ```
 
 ```bash
-kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus/felix-metrics-service-monitor.yaml -n $NAMESPACE
+kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus/felix-metrics-service-monitor.yaml -n $NAMESPACE
 ```
 
 The .yamls have no namespace defined so when you apply `kubectl`, it is applied in the $NAMESPACE.
@@ -43352,7 +43353,7 @@ export NAMESPACE=<my-prometheus-namespace>
 ```
 
 ```bash
-kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/prometheus/typha-metrics-service-monitor.yaml -n $NAMESPACE
+kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/prometheus/typha-metrics-service-monitor.yaml -n $NAMESPACE
 ```
 
 The .yamls have no namespace defined so when you apply `kubectl`, it is applied in the $NAMESPACE.
@@ -44758,7 +44759,7 @@ To add the license-agent component in a Kubernetes cluster for license metrics, 
 3. Apply the manifest.
    <!-- -->
    ```text
-    kubectl apply -f https://downloads.tigera.io/ee/v3.22.5/manifests/licenseagent.yaml
+    kubectl apply -f https://downloads.tigera.io/ee/v3.22.6/manifests/licenseagent.yaml
    ```
 
 ### Create alerts using Prometheus metrics[​](#create-alerts-using-prometheus-metrics)
@@ -45770,7 +45771,7 @@ EOF
 When the main install guide tells you to apply the `custom-resources.yaml`, typically by running `kubectl create` with the URL of the file directly, you should instead download the file, so that you can edit it:
 
 ```bash
- curl -o custom-resources.yaml https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+ curl -o custom-resources.yaml https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
 ```
 
 Edit the file in your editor of choice and find the `Installation` resource, which should be at the top of the file. To enable eBPF mode, we need to add a new `calicoNetwork` section inside the `spec` of the Installation resource, including the `linuxDataplane` field. For EKS Bottlerocket OS only, you should also add the `flexVolumePath` setting as shown below.
@@ -46488,9 +46489,9 @@ To use nftables, your Kubernetes installation must be configured to use kube-pro
 1. Install the Tigera Operator and custom resource definitions.
 
    ```bash
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/operator-crds.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/operator-crds.yaml
 
-   kubectl create -f https://downloads.tigera.io/ee/v3.22.5/manifests/tigera-operator.yaml
+   kubectl create -f https://downloads.tigera.io/ee/v3.22.6/manifests/tigera-operator.yaml
    ```
 
    > **SECONDARY:** Due to the large size of the CRD bundle, `kubectl apply` might exceed request limits. Instead, use `kubectl create` or `kubectl replace`.
@@ -46500,7 +46501,7 @@ To use nftables, your Kubernetes installation must be configured to use kube-pro
    1. Download the default `custom-resources.yaml` file:
 
       ```bash
-      curl -O -L https://downloads.tigera.io/ee/v3.22.5/manifests/custom-resources.yaml
+      curl -O -L https://downloads.tigera.io/ee/v3.22.6/manifests/custom-resources.yaml
       ```
 
    2. Enable nftables mode by setting `spec.linuxDataplane` to `nftables` in the `Installation` resource:
@@ -57425,7 +57426,7 @@ Increasing conntrack limit
 
 Running the following command:
 
-docker run --net=host --privileged --name=calico-node -d --restart=always -e ETCD_SCHEME=http -e HOSTNAME=calico -e ETCD_AUTHORITY=127.0.0.1:2379 -e AS= -e NO_DEFAULT_POOLS= -e ETCD_ENDPOINTS= -e IP= -e IP6= -e CALICO_NETWORKING_BACKEND=bird -v /var/run/docker.sock:/var/run/docker.sock -v /var/run/calico:/var/run/calico -v /lib/modules:/lib/modules -v /var/log/calico:/var/log/calico -v /run/docker/plugins:/run/docker/plugins quay.io/tigera/node:v3.22.5
+docker run --net=host --privileged --name=calico-node -d --restart=always -e ETCD_SCHEME=http -e HOSTNAME=calico -e ETCD_AUTHORITY=127.0.0.1:2379 -e AS= -e NO_DEFAULT_POOLS= -e ETCD_ENDPOINTS= -e IP= -e IP6= -e CALICO_NETWORKING_BACKEND=bird -v /var/run/docker.sock:/var/run/docker.sock -v /var/run/calico:/var/run/calico -v /lib/modules:/lib/modules -v /var/log/calico:/var/log/calico -v /run/docker/plugins:/run/docker/plugins quay.io/tigera/node:v3.22.6
 
 Waiting for etcd connection...
 
@@ -79151,6 +79152,89 @@ Then you should observe that the new Calico Enterprise policy is enforced for ne
 
 This page lists the specific component versions that go into each release of Calico Enterprise.
 
+## Component versions for <!-- -->Calico Enterprise<!-- --> <!-- -->3.22.6[​](#component-versions-v3.22.6)
+
+[Release archive](https://downloads.tigera.io/ee/archives/release-v3.22.6-v1.40.12.tgz) <!-- -->with Kubernetes manifests. Based on Calico <!-- -->v3.31<!-- -->.
+
+This release comprises the following components, and can be installed using
+
+<!-- -->
+
+`quay.io/tigera/operator:v1.40.12`
+
+| Component                      | Version |
+| ------------------------------ | ------- |
+| alertmanager                   | v3.22.6 |
+| apiserver                      | v3.22.6 |
+| calicoctl                      | v3.22.6 |
+| calicoq                        | v3.22.6 |
+| compliance-benchmarker         | v3.22.6 |
+| compliance-controller          | v3.22.6 |
+| compliance-reporter            | v3.22.6 |
+| compliance-server              | v3.22.6 |
+| compliance-snapshotter         | v3.22.6 |
+| coreos-alertmanager            | v0.32.0 |
+| coreos-config-reloader         | v0.90.1 |
+| coreos-dex                     | v2.45.1 |
+| coreos-fluentd                 | 1.19.2  |
+| coreos-prometheus              | v3.11.1 |
+| coreos-prometheus-operator     | v0.90.1 |
+| csi                            | v3.22.6 |
+| csi-node-driver-registrar      | v3.22.6 |
+| deep-packet-inspection         | v3.22.6 |
+| dex                            | v3.22.6 |
+| dikastes                       | v3.22.6 |
+| eck-elasticsearch              | 8.19.16 |
+| eck-elasticsearch-operator     | 2.16.1  |
+| eck-kibana                     | 8.19.16 |
+| egress-gateway                 | v3.22.6 |
+| elastic-tsee-installer         | v3.22.6 |
+| elasticsearch                  | v3.22.6 |
+| elasticsearch-metrics          | v3.22.6 |
+| elasticsearch-operator         | v3.22.6 |
+| envoy                          | v3.22.6 |
+| es-gateway                     | v3.22.6 |
+| firewall-integration           | v3.22.6 |
+| flexvol                        | v3.22.6 |
+| fluentd                        | v3.22.6 |
+| fluentd-windows                | v3.22.6 |
+| gateway-api-envoy-gateway      | v3.22.6 |
+| gateway-api-envoy-proxy        | v3.22.6 |
+| gateway-api-envoy-ratelimit    | v3.22.6 |
+| gateway-l7-collector           | v3.22.6 |
+| guardian                       | v3.22.6 |
+| ingress-collector              | v3.22.6 |
+| intrusion-detection-controller | v3.22.6 |
+| istio-install-cni              | v3.22.6 |
+| istio-pilot                    | v3.22.6 |
+| istio-proxyv2                  | v3.22.6 |
+| istio-ztunnel                  | v3.22.6 |
+| key-cert-provisioner           | v3.22.6 |
+| kibana                         | v3.22.6 |
+| kube-controllers               | v3.22.6 |
+| l7-admission-controller        | v3.22.6 |
+| l7-collector                   | v3.22.6 |
+| license-agent                  | v3.22.6 |
+| linseed                        | v3.22.6 |
+| manager                        | v3.22.6 |
+| node                           | v3.22.6 |
+| node-windows                   | v3.22.6 |
+| packetcapture                  | v3.22.6 |
+| policy-recommendation          | v3.22.6 |
+| prometheus                     | v3.22.6 |
+| prometheus-config-reloader     | v3.22.6 |
+| prometheus-operator            | v3.22.6 |
+| queryserver                    | v3.22.6 |
+| tigera-cni                     | v3.22.6 |
+| tigera-cni-windows             | v3.22.6 |
+| tigera-prometheus-service      | v3.22.6 |
+| typha                          | v3.22.6 |
+| ui-apis                        | v3.22.6 |
+| upstream-istio                 | 1.28.1  |
+| voltron                        | v3.22.6 |
+| waf-http-filter                | v3.22.6 |
+| webhooks-processor             | v3.22.6 |
+
 ## Component versions for <!-- -->Calico Enterprise<!-- --> <!-- -->3.22.5[​](#component-versions-v3.22.5)
 
 [Release archive](https://downloads.tigera.io/ee/archives/release-v3.22.5-v1.40.11.tgz) <!-- -->with Kubernetes manifests. Based on Calico <!-- -->v3.31<!-- -->.
@@ -80491,7 +80575,7 @@ May 6, 2026
 
 To update an existing installation of Calico Enterprise 3.22, see [Install a patch release](https://docs.tigera.io/calico-enterprise/latest/getting-started/manifest-archive).
 
-### Calico Enterprise 3.22.5[​](#calico-enterprise-3225)
+### Calico Enterprise 3.22.5 bug fix release[​](#calico-enterprise-3225-bug-fix-release)
 
 May 20, 2026
 
@@ -80505,5 +80589,16 @@ May 20, 2026
 - Updated the Envoy Gateway CRDs in the operator project to v1.7.2 to match the images which are already at v1.7.2, so that all available features are configurable.
 - Security updates for Golang and `golang.org/x/` dependencies.
 - Fixes an issue where Felix makes unnecessary calls to nft when running in iptables mode.
+
+To update an existing installation of Calico Enterprise 3.22, see [Install a patch release](https://docs.tigera.io/calico-enterprise/latest/getting-started/manifest-archive).
+
+### Calico Enterprise 3.22.6 bug fix release[​](#calico-enterprise-3226-bug-fix-release)
+
+June 17, 2026
+
+#### Bug fixes[​](#bug-fixes-7)
+
+- Fixed an RBAC error that could prevent the operator from creating secrets in the `tigera-manager` namespace on fresh installs with the `Authentication` resource configured.
+- Security updates.
 
 To update an existing installation of Calico Enterprise 3.22, see [Install a patch release](https://docs.tigera.io/calico-enterprise/latest/getting-started/manifest-archive).
